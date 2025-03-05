@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Client Login - Service Connect</title>
+  <link rel="stylesheet" href="/Assets/css/styles.css">
+</head>
+<body>
+  <!-- Header Section with Navigation -->
+  <header>
+    <div class="container">
+      <h1>Service Connect</h1>
+      <nav>
+        <ul>
+          <li><a href="/pages/index.html">Home</a></li>
+          <li><a href="/pages/client-login.html">Client Login</a></li>
+          <li><a href="/pages/provider-login.html">Provider Login</a></li>
+          <li><a href="/pages/about.html">About</a></li>
+          <li><a href="/pages/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Client Login Form Section -->
+  <section class="login-section">
+    <div class="container">
+      <h2>Client Login</h2>
+      <form action="/pages/client-login.php" method="post" class="login-form">
+        <label for="client-email">Email:</label>
+        <input type="email" id="client-email" name="email" required>
+
+        <label for="client-password">Password:</label>
+        <input type="password" id="client-password" name="password" required>
+
+        <button type="submit" class="submitbtn">Login</button>
+      </form>
+      <p>Don't have an account? <a href="/pages/index.html">Sign Up</a></p>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Service Connect. All rights reserved.</p>
+      <nav>
+        <ul>
+          <li><a href="/pages/privacy.html">Privacy Policy</a></li>
+          <li><a href="/pages/terms.html">Terms of Service</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
