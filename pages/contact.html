@@ -4,55 +4,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact - Service Connect</title>
-  <link rel="stylesheet" href="/Assets/css/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <!-- Header Section with Navigation -->
-  <header>
-    <div class="container">
-      <h1>Service Connect</h1>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Header Section -->
+  <header class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-4 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center px-6">
+      <h1 class="text-2xl font-bold">Service Connect</h1>
       <nav>
-        <ul>
-          <li><a href="/pages/index.html">Home</a></li>
-          <li><a href="/pages/client-login.html">Client Login</a></li>
-          <li><a href="/pages/provider-login.html">Provider Login</a></li>
-          <li><a href="/pages/about.html">About</a></li>
-          <li><a href="/pages/contact.html">Contact</a></li>
+        <ul class="flex space-x-6">
+          <li><a href="/pages/index.html" class="hover:underline">Home</a></li>
+          <li><a href="/pages/client-login.html" class="hover:underline">Client Login</a></li>
+          <li><a href="/pages/provider-login.html" class="hover:underline">Provider Login</a></li>
+          <li><a href="/pages/about.html" class="hover:underline">About</a></li>
+          <li><a href="/pages/contact.html" class="hover:underline">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <!-- Contact Form Section -->
-  <section class="contact-section">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <form action="/servers/php/contact.php" method="post" class="contact-form">
-        <label for="contact-name">Name:</label>
-        <input type="text" id="contact-name" name="name" required>
+  <section class="flex items-center justify-center min-h-screen">
+    <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg">
+      <h2 class="text-2xl font-bold text-center text-gray-900 mb-6">Contact Us</h2>
+      
+      <form action="/servers/php/contact.php" method="post" class="space-y-4">
+        <!-- Name -->
+        <div>
+          <label for="contact-name" class="block font-medium text-gray-700">Name:</label>
+          <input type="text" id="contact-name" name="name" required 
+                 class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
 
-        <label for="contact-email">Email:</label>
-        <input type="email" id="contact-email" name="email" required>
+        <!-- Email -->
+        <div>
+          <label for="contact-email" class="block font-medium text-gray-700">Email:</label>
+          <input type="email" id="contact-email" name="email" required 
+                 class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
 
-        <label for="contact-message">Message:</label>
-        <textarea id="contact-message" name="message" rows="5" required></textarea>
+        <!-- Message -->
+        <div>
+          <label for="contact-message" class="block font-medium text-gray-700">Message:</label>
+          <textarea id="contact-message" name="message" rows="5" required 
+                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+        </div>
 
-        <button type="submit" class="submitbtn">Send Message</button>
+        <!-- Send Button -->
+        <button type="submit" 
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition">
+          Send Message
+        </button>
       </form>
     </div>
   </section>
 
   <!-- Footer Section -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Service Connect. All rights reserved.</p>
-      <nav>
-        <ul>
-          <li><a href="/pages/privacy.html">Privacy Policy</a></li>
-          <li><a href="/pages/terms.html">Terms of Service</a></li>
+  <footer class="bg-gradient-to-r from-blue-500 to-blue-800 text-white py-8 mt-12">
+    <div class="container mx-auto text-center">
+      <h3 class="text-lg font-semibold">Stay Connected</h3>
+      <p class="mt-2 text-gray-200">We’re here to assist you. Reach out to us anytime.</p>
+      
+      <!-- Social Media Icons -->
+      <div class="mt-4 flex justify-center space-x-6">
+        <a href="#" class="hover:opacity-75"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" class="w-6 h-6"></a>
+        <a href="#" class="hover:opacity-75"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" class="w-6 h-6"></a>
+        <a href="#" class="hover:opacity-75"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="LinkedIn" class="w-6 h-6"></a>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="mt-6">
+        <ul class="flex justify-center space-x-6">
+          <li><a href="/pages/privacy.html" class="hover:underline text-gray-200">Privacy Policy</a></li>
+          <li><a href="/pages/terms.html" class="hover:underline text-gray-200">Terms of Service</a></li>
         </ul>
       </nav>
+
+      <p class="mt-6 text-gray-200">&copy; 2025 Service Connect. All rights reserved.</p>
     </div>
   </footer>
+
 </body>
 </html>
