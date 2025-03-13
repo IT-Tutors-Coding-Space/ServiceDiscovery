@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+  
 <head>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Client Login - Service Connect</title>
@@ -22,6 +24,7 @@
       </nav>
     </div>
   </header>
+  
 
   <!-- Client Login Form Section -->
   <section class="login-section">
@@ -31,14 +34,51 @@
         <label for="client-email">Email:</label>
         <input type="email" id="client-email" name="email" required>
 
+      
         <label for="client-password">Password:</label>
         <input type="password" id="client-password" name="password" required>
-
+        <input type="checkbox" onclick="togglePassword()"> Show Password
+      
+        
+        <script>
+          function togglePassword() {
+            var password = document.getElementById("client-password");
+            password.type = (password.type === "password") ? "text" : "password";
+          }
+        </script>
+        <script>
+          document.querySelector(".login-form").addEventListener("submit", function(event) {
+            var email = document.getElementById("client-email").value;
+            var password = document.getElementById("client-password").value;
+            if (!email || !password) {
+              event.preventDefault();
+              alert("Please fill in both fields.");
+            }
+          });
+        </script>
+        
+        
         <button type="submit" class="submitbtn">Login</button>
+        
+        
       </form>
       <p>Don't have an account? <a href="/pages/index.html">Sign Up</a></p>
     </div>
   </section>
+  <meta name="description" content="Client Login page for Service Connect">
+<meta name="keywords" content="client login, service connect, user login, secure login">
+<meta property="og:title" content="Client Login - Service Connect">
+<meta property="og:description" content="Login to your account on Service Connect">
+<meta property="og:image" content="URL-to-image">
+<div id="loading" style="display:none;">Loading...</div>
+<script>
+  document.querySelector(".login-form").addEventListener("submit", function() {
+    document.getElementById("loading").style.display = "block";
+  });
+</script>
+
+
+
 
   <!-- Footer Section -->
   <footer>
