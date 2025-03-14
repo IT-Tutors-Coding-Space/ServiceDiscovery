@@ -1,0 +1,83 @@
+/* style.css */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex; /* Use flexbox for layout */
+}
+
+.container {
+    display: flex;
+    width: 100%; /* Take full width */
+}
+
+.image-container {
+    flex: 0.cqmax; /* Take up 1 part of the available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white
+    ; /* Optional background for the image area */
+}
+
+.left-image {
+    max-width: 400%; /* Adjust image size as needed */
+    max-height: 120%;
+    object-fit: contain; /* or cover, depending on desired behavior */
+}
+
+.registration-container {
+    flex: 1; /* Take up 1 part of the available space */
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center form vertically */
+    align-items: center; /* Center form horizontally */
+}
+
+.registration-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.registration-container .form-group {
+    margin-bottom: 15px;
+    width: 100%; /* Make form elements take up a reasonable width */
+}
+
+.registration-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.registration-container input[type="text"],
+.registration-container input[type="email"],
+.registration-container input[type="tel"],
+.registration-container input[type="password"] {
+    width: calc(100% - 12px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.registration-container button {
+    width: 80%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.registration-container button:hover {
+    background-color: #0056b3;
+}
+
+.registration-container .form-group:last-child {
+    margin-bottom: 20px;
+}
