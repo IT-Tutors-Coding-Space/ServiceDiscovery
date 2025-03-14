@@ -16,7 +16,7 @@
     --header-bg: #fff;
     --footer-bg: #333;
     --footer-text: #fff;
-    --max-width: 1200px;
+    --max-width: 1500px;
     --transition-speed: 0.3s;
   }
   
@@ -34,8 +34,9 @@
     width: 90%;
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 15px;
-  }
+    padding: 0 5px;
+    padding-left: 2px;
+      }
   
   /* ==========================================================================
      Header & Navigation
@@ -44,18 +45,19 @@
     background-color: var(--header-bg);
     border-bottom: 1px solid #dddada;
     padding: 20px 0;
+    
   }
   header h1 {
     float: left;
     margin: 0;
     font-size: 1.8em;
-  }
+      }
   header nav ul {
     list-style: none;
     float: right;
     margin: 0;
     padding: 0;
-  }
+      }
   header nav ul li {
     display: inline-block;
     margin-left: 20px;
@@ -79,10 +81,11 @@
      Hero Section (Home Page)
      ========================================================================== */
   .hero {
-    background: url('/assets/images/hero-bg.jpg') no-repeat center center/cover;
-    color: #fff;
+    background: url('/Images/pic\(1\).jpg') no-repeat center center/cover;
+    color: black;
     padding: 100px 0;
     text-align: center;
+
   }
   .hero h2 {
     font-size: 2.5em;
@@ -91,6 +94,7 @@
   .hero p {
     font-size: 1.2em;
     margin-bottom: 20px;
+    color:#1B1B1B;
   }
   .cta-buttons .cta-btn {
     display: inline-block;
@@ -103,7 +107,8 @@
     transition: background var(--transition-speed);
   }
   .cta-buttons .cta-btn:hover {
-    background-color: var(--primary-color-dark);
+    transition: background var(--transition-speed);
+    background-color: #32CD32;
   }
   
   /* ==========================================================================
@@ -157,6 +162,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
+
   
   /* ==========================================================================
      Login Sections (Client & Provider)
@@ -276,34 +282,24 @@
   /* ==========================================================================
      Footer
      ========================================================================== */
-  footer {
-    background-color: var(--footer-bg);
-    color: var(--footer-text);
-    padding: 20px 0;
+
+  .contactt{
+    margin: 0;
+    font-size: 18px;
+    font-weight:bold;
     text-align: center;
   }
-  footer p {
-    margin: 0;
-    font-size: 14px;
+  .foot{
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
   }
-  footer nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0 0;
+  .contDetails{
+    margin-top: 10px;
   }
-  footer nav ul li {
-    display: inline;
-    margin: 0 10px;
+  .email{
+    margin-right: 40%;
   }
-  footer nav ul li a {
-    color: var(--footer-text);
-    text-decoration: none;
-    transition: color var(--transition-speed);
-  }
-  footer nav ul li a:hover {
-    color: var(--primary-color);
-  }
-  
   /* ==========================================================================
      Responsive Styles
      ========================================================================== */
