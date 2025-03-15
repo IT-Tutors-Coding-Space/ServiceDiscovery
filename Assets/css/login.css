@@ -1,0 +1,58 @@
+/* General Body Styling */
+body {
+    background-color: #f0f8ff;  /* Light Blue Background */
+    color: #333;  /* Dark text color for readability */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Header Styling */
+  header {
+    background-color: hsl(120, 20%, 5%);  /* Green background */
+    color: white;  /* White text color */
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  /* Navigation Menu */
+  nav {
+    background-color: #333;  /* Dark background */
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  nav a {
+    color: white;  /* White text color for links */
+    margin: 0 15px;
+    text-decoration: none;  /* Remove underline */
+    font-size: 18px;
+  }
+  
+  nav a:hover {
+    color: #ff6347;  /* Change to Tomato color on hover */
+  }
+  
+  /* Main Content Area */
+  .main-content {
+    padding: 20px;
+    background-color: #fff;  /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Light shadow for depth */
+    margin: 20px;
+  }
+  
+  /* Buttons */
+  button {
+    background-color: #ff6347;  /* Tomato red background */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #ff4500;  /* Darker red when hovered */
+  }
+  
