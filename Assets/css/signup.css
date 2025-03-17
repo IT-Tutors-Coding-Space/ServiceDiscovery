@@ -82,7 +82,7 @@ a:hover {
   /* Left Side - Background Image */
   .left-side {
     flex: 1;
-    background: url('/Service/Assets/images/hero-bg.png') no-repeat center center;
+    background: url('/ServiceDiscovery/Assets/images/hero-bg.png') no-repeat center center;
     background-size: cover;
     display: flex; 
     align-items: center;
