@@ -1,6 +1,6 @@
 <?php
 session_start();
 session_destroy();
-header("Location: /Service/pages/Home/login.html");
+header("Location: " . BASE_PATH . "/Home/login.html");
 exit();
 ?>
