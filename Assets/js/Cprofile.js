@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("/Service/php/Cprofile.php")
+    fetch("/ServiceDiscovery/php/Cprofile.php")
         .then(response => response.json())
         .then(data => {
             if (data.error) {
                 alert(data.error);
-                window.location.href = "/Service/pages/Home/login.html";
+                window.location.href = "/ServiceDiscovery/pages/Home/login.php";
                 return;
             }
 
