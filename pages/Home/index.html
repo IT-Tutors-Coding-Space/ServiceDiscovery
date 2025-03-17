@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Service Connect Platform</title>
+    <link rel="stylesheet" href="/Service/Assets/css/styles.css">
+    <link rel="stylesheet" href="/Service/Assets/css/home.css">
+</head>
+<body class="whole_body">
+    <div class="body_wrap">
+        <header class="fixed-header">
+            <div class="container header-container">
+                <h1>SERVICE DISCOVERY</h1>
+
+                <div class="search-filter">
+                    <input type="text" id="search-input" placeholder="Search for services..." aria-label="Search businesses">
+                    <button id="search-button" aria-label="Search">Search</button>
+                </div>
+                <div class="user-actions">
+                  <a href="/Service/pages/Home/login.html" class="account>">Join Us</a>
+                </div>
+            </div>
+
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="container">
+                    <h2>Connecting Clients with Trusted Service Providers</h2>
+                    <p>Browse available opportunities from verified providers.</p>
+                </div>
+            </section>
+
+            <section class="service-list">
+                <div class="container">
+                  <h2>Services in your area</h2>
+                    <div id="business-container" class="service-grid" aria-live="polite">
+                    </div>
+                </div>
+            </section>
+
+            <footer class="site-footer">
+                <div class="container">
+                    <p>&copy; 2023 Service Connect. All rights reserved.</p>
+                </div>
+            </footer>
+          </main>
+    </div>
+    <script src="/Service/Assets/js/home.js"></script>
+</body>
+</html>

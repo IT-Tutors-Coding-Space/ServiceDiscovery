@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #070606;
+    text-align: center;
+}
+
+.profile-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.profile-header {
+    text-align: center;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.profile-details {
+    text-align: left;
+    padding: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+#logout-btn {
+    background: red;
+}
+
+#logout-btn:hover {
+    background: darkred;
+}
+/* Skeleton loader base */
+.skeleton {
+    background: linear-gradient(100deg, #e0e0e0 30%, #f8f8f8 50%, #e0e0e0 70%);
+    background-size: 400% 100%;
+    animation: shimmer 1.5s infinite linear;
+}
+
+/* Shimmer effect animation */
+@keyframes shimmer {
+    0% { background-position: -100% 0; }
+    100% { background-position: 100% 0; }
+}
+
+/* Profile image loader */
+.profile-pic.skeleton {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* Text loaders */
+.skeleton-text {
+    width: 80%;
+    height: 16px;
+    margin: 10px auto;
+    border-radius: 4px;
+}
+
+.profile-details .skeleton-text {
+    width: 60%;
+    height: 14px;
+    margin: 5px 0;
+}
