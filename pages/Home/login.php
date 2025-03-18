@@ -55,7 +55,7 @@ if(isset($_SESSION['success'])){
           </select>
 
           <div class="remember-forgot">
-            <a href="#">Forgot Password?</a>
+            <a href="/ServiceDiscovery/pages/Home/forgot_pass.php">Forgot Password?</a>
           </div>
 
           <button type="submit" class="submitbtn">Sign In</button>
