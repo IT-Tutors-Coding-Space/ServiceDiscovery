@@ -1,9 +1,9 @@
 <?php
     session_start();
 
-    require '/ServiceDiscovery/php/conn.php';
+    
     if (!isset($_SESSION['id']) || $_SESSION['role'] !== "Customer") {
-        header("Location:".BASE_PATH. "Home/login.php");
+        header("Location: /ServiceDiscovery/pages/Home/login.php");
         exit();
     }
 ?>
