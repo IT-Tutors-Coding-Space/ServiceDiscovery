@@ -2,11 +2,11 @@
 <?php
 session_start();
 if (isset($_SESSION['error'])) {
-    echo '<div class="error-message">' . $_SESSION['error'] . '</div>';
+    echo '<div class="popup-message error-message">' . $_SESSION['error'] . '</div>';
     unset($_SESSION['error']); // Clear the error message
 }
 if(isset($_SESSION['success'])){
-    echo '<div class="success-message">'. $_SESSION['success'] . '</div>';
+    echo '<div class="popup-message success-message">'. $_SESSION['success'] . '</div>';
     unset($_SESSION['success']);
 }
 ?>
@@ -65,5 +65,6 @@ if(isset($_SESSION['success'])){
       </div>
     </div>
   </div>
+  <script src="/ServiceDiscovery/Assets/js/login.js"></script>
 </body>
 </html>
