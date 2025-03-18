@@ -2,6 +2,8 @@
 session_start();
 // Database connection
 require "conn.php";
+// Session handler
+require '/ServiceDiscovery/session_handler.php';
 
 function redirectWithError($error, $location) {
     $_SESSION['error'] = $error;

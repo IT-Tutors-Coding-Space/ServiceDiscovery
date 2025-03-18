@@ -1,4 +1,7 @@
 <?php
+ // Include the session handler
+require '/ServiceDiscovery/session_handler.php';
+
 session_start();
 if (session_status() !== PHP_SESSION_NONE) {
     session_regenerate_id(true); // Secure session handling
