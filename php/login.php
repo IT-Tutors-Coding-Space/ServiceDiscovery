@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Validate input
     if (empty($email) || empty($password) || empty($role)) {
         $_SESSION['error'] = "All fields are required.";
-        header("Location:" . BASE_PATH ."/Home/login.html");
+        header("Location:" . BASE_PATH ."Home/login.php");
         exit();
     }
 
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $allowed_roles = ["Customer", "Business Owner"];
     if (!in_array($role, $allowed_roles)) {
         $_SESSION['error'] = "Invalid role selected.";
-        header("Location: " . BASE_PATH . "/Home/login.html");
+        header("Location: " . BASE_PATH . "Home/login.php");
         exit();
     }
 
@@ -41,9 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             // Redirect based on role
             if ($user['role'] === "Customer") {
-                header("Location:" . BASE_PATH . "/Customer/profile.html");
+                header("Location:" . BASE_PATH . "Customer/profile.php");
             } elseif ($user['role'] === "Business Owner") {
-                header("Location: " . BASE_PATH . "/Dashboard/index.html");
+                header("Location: " . BASE_PATH . "Dashboard/index.html");
             }
             exit();
         } else {
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Redirect back to login page if login fails
-    header("Location:" . BASE_PATH . "/Home/login.html");
+    header("Location:" . BASE_PATH . "Home/login.php");
     exit();
 }
 ?>
