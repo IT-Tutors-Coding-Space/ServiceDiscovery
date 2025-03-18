@@ -3,7 +3,7 @@ class MySessionHandler extends SessionHandler {
     private $db;
 
     public function open(string $savePath, string $sessionName): bool {
-        $this->db = new PDO("mysql:host=localhost;dbname=servicediscovery", "root", "");
+        $this->db = new PDO("mysql:host=localhost;dbname=service_connect", "root", "");
         return true;
     }
 
