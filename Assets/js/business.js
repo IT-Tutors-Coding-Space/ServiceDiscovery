@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const page = this.getAttribute("data-page");
 
             // Load the page content
-            fetch(`/ServiceDiscovery/pages/Dashboard/${page}.html`)
+            fetch(`/ServiceDiscovery/pages/Dashboard/${page}.php`)
                 .then(response => response.text())
                 .then(data => {
                     content.innerHTML = data;
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Load content from hash on page load or back navigation
     function loadPageFromHash() {
         const page = window.location.hash.replace("#", "") || "business_dashboard";
-        fetch(`/ServiceDiscovery/pages/Dashboard/${page}.html`)
+        fetch(`/ServiceDiscovery/pages/Dashboard/${page}.php`)
             .then(response => response.text())
             .then(data => {
                 content.innerHTML = data;
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("popstate", loadPageFromHash);
 
     function navigateTo(page){
-        let url = page == "profile" ? "/ServiceDiscovery/pages/Dashboard/profile.html" : `/ServiceDiscovery/pages/Dashboard/${page}.html`;
+        let url = page == "profile" ? "/ServiceDiscovery/pages/Dashboard/profile.php" : `/ServiceDiscovery/pages/Dashboard/${page}.php`;
         history.pushState({},"",`#${page}`);
         loadPage(url);
 
