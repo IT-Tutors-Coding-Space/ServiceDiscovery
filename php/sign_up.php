@@ -5,7 +5,7 @@ require "conn.php";
 
 function redirectWithError($error, $location) {
     $_SESSION['error'] = $error;
-    header("Location: " . BASE_PATH . $location);
+    header("Location:  $location ");
     exit();
 }
 
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
-        redirectWithError("Email is already in use.",BASE_PATH. "/Home/signup.html");
+        redirectWithError("Email is already in use.",BASE_PATH. "/Home/signup.php");
     }
 
     // Hash password for security
@@ -64,11 +64,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         $_SESSION['success'] = "Registration successful! Please log in.";
-        header("Location: " . BASE_PATH . "/Home/login.html");
+        header("Location: " . BASE_PATH . "/Home/login.php");
         exit();
     } else {
         error_log("Database error: " . print_r($stmt->errorInfo(), true)); // Log the error
-        redirectWithError("An error occurred. Please try again.",BASE_PATH. "/Home/signup.html");
+        redirectWithError("An error occurred. Please try again.",BASE_PATH. "/Home/signup.php");
     }
 }
 ?>
