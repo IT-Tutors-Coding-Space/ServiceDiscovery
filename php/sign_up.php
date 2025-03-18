@@ -3,7 +3,7 @@ session_start();
 // Database connection
 require "conn.php";
 // Session handler
-require '/ServiceDiscovery/session_handler.php';
+require '/ServiceDiscovery/php/session_handler.php';
 
 function redirectWithError($error, $location) {
     $_SESSION['error'] = $error;
@@ -22,27 +22,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $allowed_roles = ["Customer", "Business Owner"];
 
     if (!in_array($role, $allowed_roles)) {
-        redirectWithError("Invalid role.", BASE_PATH . "/Home/signup.html");
+        redirectWithError("Invalid role.", BASE_PATH . "Home/signup.php");
     }
 
     // Check if all fields are required
     if (empty($username) || empty($email) || empty($password) || empty($confirmPassword) || empty($role)) {
-        redirectWithError("All fields are required.",BASE_PATH. "/Home/signup.html");
+        redirectWithError("All fields are required.",BASE_PATH. "Home/signup.php");
     }
 
     // Validate email format
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        redirectWithError("Invalid email format.",BASE_PATH. "/Home/signup.html");
+        redirectWithError("Invalid email format.",BASE_PATH. "Home/signup.php");
     }
 
     // Validate username length
     if (strlen($username) < 3 || strlen($username) > 50) {
-        redirectWithError("Username must be between 3 and 50 characters.", BASE_PATH ."/Home/signup.html");
+        redirectWithError("Username must be between 3 and 50 characters.", BASE_PATH ."Home/signup.php");
     }
 
     // Validate passwords match
     if ($password !== $confirmPassword) {
-        redirectWithError("Passwords do not match.",BASE_PATH. "/Home/signup.html");
+        redirectWithError("Passwords do not match.",BASE_PATH. "Home/signup.php");
     }
 
     // Check if email already exists
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
-        redirectWithError("Email is already in use.",BASE_PATH. "/Home/signup.php");
+        redirectWithError("Email is already in use.",BASE_PATH. "Home/signup.php");
     }
 
     // Hash password for security
@@ -66,11 +66,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         $_SESSION['success'] = "Registration successful! Please log in.";
-        header("Location: " . BASE_PATH . "/Home/login.php");
+        header("Location: " . BASE_PATH . "Home/login.php");
         exit();
     } else {
         error_log("Database error: " . print_r($stmt->errorInfo(), true)); // Log the error
-        redirectWithError("An error occurred. Please try again.",BASE_PATH. "/Home/signup.php");
+        redirectWithError("An error occurred. Please try again.",BASE_PATH. "Home/signup.php");
     }
 }
 ?>
