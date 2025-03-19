@@ -1,0 +1,215 @@
+/* ========================================================================== 
+   Global Styles & Variables 
+   ========================================================================== */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --primary-color: #4CAF50;
+    --primary-color-dark: #45a049;
+    --secondary-color: #f44336;
+    --text-color: #333;
+    --bg-color: #f4f4f9;
+    --header-bg: #fff;
+    --footer-bg: #333;
+    --footer-text: #fff;
+    --max-width: 1500px;
+    --transition-speed: 0.3s;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Stops horizontal scrolling */
+  }
+  
+  /* ========================================================================== 
+     Header & Navigation
+     ========================================================================== */
+  header {
+    font-family: Arial, sans-serif;
+    background-color: #c4c1c1;
+    border-bottom: 1px solid #c0bcbc;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap; /* Allows items to move to the next row if needed */
+    justify-content: space-between;
+    background-color: #c4c1c1;
+    color: #333;
+    align-items: center;
+    padding: 10px 20px;
+    overflow: hidden; /* Prevents scrolling */
+  }
+  
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    margin: 10px; /* Adds spacing between items */
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+  .menu {
+    display: none;
+    list-style: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #333;
+    text-align: center;
+    padding: 10px 0;
+    color: white;
+  }
+  
+  .menu li {
+    padding: 10px;
+  }
+  
+  .menu li a {
+    color: rgb(41, 40, 40);
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+  }
+  
+  .menu li a:hover {
+    color: rgb(6, 158, 6);
+  }
+  
+  .checkbtn {
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  #check {
+    display: none;
+  }
+  
+  /* Show menu when checkbox is checked */
+  #check:checked ~ .menu {
+    display: block;
+  }
+  
+  /* Hover Effect */
+  .checkbtn:hover {
+    color: #ffcc00;
+  }
+  
+  /* Responsive */
+  @media (min-width: 768px) {
+    .checkbtn {
+      display: none;
+    }
+    .menu {
+      display: flex;
+      position: static;
+      width: auto;
+      background: none;
+      color: white;
+    }
+    .menu li {
+      padding: 0 15px;
+    }
+  }
+  
+  /* ========================================================================== 
+     About Section
+     ========================================================================== */
+  .about-section {
+    padding: 60px 0;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .about-section h2 {
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    color: #333;
+  }
+  
+  .about-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* ========================================================================== 
+     Footer
+     ========================================================================== */
+  .foot {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 40px 0;
+  }
+  
+  .contactt {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .contDetails {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .email, .tel {
+    font-size: 16px;
+  }
+  
+  /* ========================================================================== 
+     Responsive Styles
+     ========================================================================== */
+  @media (max-width: 768px) {
+    .about-section {
+      padding: 40px 20px;
+    }
+  
+    .about-section h2 {
+      font-size: 2rem;
+    }
+  
+    .about-section p {
+      font-size: 1rem;
+    }
+  
+    .foot {
+      padding: 30px 20px;
+    }
+  
+    .contDetails {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .contDetails .email, .contDetails .tel {
+      margin-bottom: 10px;
+    }
+  }
+  

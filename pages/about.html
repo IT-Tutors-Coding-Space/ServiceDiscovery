@@ -4,23 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About - Service Connect</title>
-  <link rel="stylesheet" href="/Assets/css/styles.css">
+  <link rel="stylesheet" href="/Assets/css/about.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Added FontAwesome link -->
 </head>
-<body>
+<body class="whole_body">
+  <div class="body_wrap">
   <!-- Header Section with Navigation -->
   <header>
-    <div class="container">
-      <h1>Service Connect</h1>
-      <nav>
-        <ul>
-          <li><a href="/pages/index.html">Home</a></li>
-          <li><a href="/pages/client-login.html">Client Login</a></li>
-          <li><a href="/pages/provider-login.html">Provider Login</a></li>
-          <li><a href="/pages/about.html">About</a></li>
-          <li><a href="/pages/contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
+    <nav>
+      <div class="logo">SERVICE CONNECT</div>
+      <input type="checkbox" id="check"> 
+      <label for="check" class="checkbtn">
+         <i class="fas fa-bars"></i>
+      </label>
+      
+      <ul class="menu">
+        <li><a href="/pages/index.html">Home</a></li>
+        <li><a href="/pages/client-login.html">Client Login</a></li>
+        <li><a href="/pages/provider-login.html">Provider Login</a></li>
+        <li><a href="/pages/about.html" class="active">About</a></li>
+        <li><a href="/pages/contact.html">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
   <!-- About Section -->
@@ -37,16 +42,13 @@
   </section>
 
   <!-- Footer Section -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Service Connect. All rights reserved.</p>
-      <nav>
-        <ul>
-          <li><a href="/pages/privacy.html">Privacy Policy</a></li>
-          <li><a href="/pages/terms.html">Terms of Service</a></li>
-        </ul>
-      </nav>
+  <footer class="foot">
+    <span class="contactt">Contact us at:</span>
+    <div class="contDetails">
+      <span class="Email"><strong>Email:</strong> servicediscovery@gmail.com</span>
+      <span class="tel"><strong>Phone:</strong> +(254) 713 259 986</span>
     </div>
   </footer>
+  </div>
 </body>
 </html>
