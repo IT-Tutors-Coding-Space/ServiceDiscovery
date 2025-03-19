@@ -4,17 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Client Login - Service Connect</title>
-  <link rel="stylesheet" href="/Assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="/Assets/css/login.css">
 </head>
 <body>
+   <!-- Skip link for accessibility -->
+   <a href="#login-form" class="skip-link">Skip to login</a>
   <!-- Header Section with Navigation -->
   <header>
-    <div class="container">
-      <h1>Service Connect</h1>
-      <nav>
-        <ul>
+    <nav>
+    <div class="logo">SERVICE CONNECT</div>
+      <input type="checkbox" id="check"> 
+      <label for="check" class="checkbtn">
+         <i class="fas fa-bars"></i>
+      </label>
+      
+      <ul class="menu">
+          <li><a class="active" href="/pages/client-login.html">Client Login</a></li>
           <li><a href="/pages/index.html">Home</a></li>
-          <li><a href="/pages/client-login.html">Client Login</a></li>
+          
           <li><a href="/pages/provider-login.html">Provider Login</a></li>
           <li><a href="/pages/about.html">About</a></li>
           <li><a href="/pages/contact.html">Contact</a></li>
@@ -27,16 +35,34 @@
   <section class="login-section">
     <div class="container">
       <h2>Client Login</h2>
-      <form action="/pages/client-login.php" method="post" class="login-form">
-        <label for="client-email">Email:</label>
-        <input type="email" id="client-email" name="email" required>
+      <p>Please fill out this form with the required information</p>
+      <form action="/pages/client-login.php" method="post" class="login-form" id="login-form">
+        <fieldset>
+          
+          <label for="email">Enter Your Email:</label>
+          <input id="email" name="email" type="email" required />
 
-        <label for="client-password">Password:</label>
-        <input type="password" id="client-password" name="password" required>
+          <label for="password">Enter your Password:</label>
+          <input id="password" name="password" type="password" 
+                 pattern="[A-Za-z0-9!@#$%^&*]{8,}" required 
+                 title="Password must be at least 8 characters long and include letters, numbers, and special characters." />
+        </fieldset>
 
-        <button type="submit" class="submitbtn">Login</button>
+        <fieldset>
+          <legend>Account type (Required)</legend>
+          <label><input id="requester-account" type="radio" name="account-type" checked /> Service Requester</label>
+          <label><input id="provider-account" type="radio" name="account-type" /> Service Provider</label>
+        </fieldset>
+
+         <p>Don't have an account? <a href="/pages/index.html">Sign Up</a></p>
+
+      <label for="terms-and-conditions">
+         <input id="terms-and-conditions" type="checkbox" required name="terms-and-conditions" />
+          I accept the <a href="/pages/terms.html">terms and conditions</a>
+      </label>
+
+      <input type="submit" value="Login" class="submit-btn" />
       </form>
-      <p>Don't have an account? <a href="/pages/index.html">Sign Up</a></p>
     </div>
   </section>
 

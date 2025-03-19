@@ -3,9 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Provider Signup - Service Connect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="/Assets/css/signup.css">
 </head>
 <body>
-    
+   
+    <!-- Header Section with Navigation -->
+  <header>
+    <nav>
+    <div class="logo">SERVICE CONNECT</div>
+    <input type="checkbox" id="check"> 
+    <label for="check" class="checkbtn">
+       <i class="fas fa-bars"></i>
+    </label>
+      
+        <ul class="menu">
+          <li><a  class="active" href="/pages/index.html">Home</a></li>
+
+          <li><a href="/pages/client-login.html">Client Login</a></li>
+          <li><a href="/pages/provider-login.html">Provider Login</a></li>
+          <li><a href="/pages/about.html">About</a></li>
+          <li><a href="/pages/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- register.html -->
+  <main>
+    <section class="container">
+        <div class="form-container">
+            <form action="provider_register.php" method="POST" class="form">
+                <h2>Register</h2>
+                <div class="input-group">
+                    <label for="firstName">FirstName: </label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="input-group">
+                    <label for="lastName">LastName: </label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email: </label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Create Password: </label>
+                    <input id="password" name="password" type="password" 
+                    pattern="[A-Za-z0-9!@#$%^&*]{8,}" required 
+                    title="Password must be at least 8 characters long and include letters, numbers, and special characters.">
+                </div>
+                <div class="input-group">
+                    <label for="password">Confirm Password: </label>
+                    <input id="password" name="password" type="password" 
+                    pattern="[A-Za-z0-9!@#$%^&*]{8,}" required 
+                    title="Password must be at least 8 characters long and include letters, numbers, and special characters.">
+                </div>
+                <fieldset>
+                    <legend>Are you here to Provide or Request a service: </legend>
+                    <select>
+                        <option> </option>
+                        <option>Service Requester</option>
+                        <option>Service Provider</option>
+                    </select>
+                </fieldset>
+                <button type="submit" class="btn">Register</button>
+                <p>Already have an account? <a href="provider-login.html">Login here</a></p>
+            </form>
+        </div>
+    </section>
+  </main>
 </body>
 </html>
