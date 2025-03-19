@@ -1,0 +1,193 @@
+/* ==========================================================================
+   Global Styles & Variables
+   ========================================================================== */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --primary-color: #4CAF50;
+    --primary-color-dark: #45a049;
+    --secondary-color: #f44336;
+    --text-color: #333;
+    --bg-color: #f4f4f9;
+    --header-bg: #fff;
+    --footer-bg: #333;
+    --footer-text: #fff;
+    --max-width: 1500px;
+    --transition-speed: 0.3s;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Stops horizontal scrolling */
+  }
+  
+  /* Navigation Bar */
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #c4c1c1;
+  color: #333;
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+nav .menu {
+  display: none;
+  list-style: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background: #333;
+  text-align: center;
+  padding: 10px 0;
+  color: white;
+}
+
+nav .menu li {
+  padding: 10px;
+}
+
+nav .menu li a {
+  color: rgb(41, 40, 40);
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+}
+
+nav .menu li a:hover {
+  color: rgb(6, 158, 6);
+}
+
+.checkbtn {
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+#check {
+  display: none;
+}
+
+/* Show menu when checkbox is checked */
+#check:checked ~ .menu {
+  display: block;
+}
+
+.checkbtn:hover {
+  color: #ffcc00;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .checkbtn {
+      display: none;
+  }
+  .menu {
+      display: flex;
+      position: static;
+      width: auto;
+      background: none;
+      color: white;
+  }
+  .menu li {
+      padding: 0 15px;
+  }
+}
+  
+  /* ==========================================================================
+     About Section (Shared for Terms and Privacy)
+     ========================================================================== */
+  .about-section,
+  .privacy-policy,
+  .terms-of-service {
+    padding: 60px 0;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .about-section h2,
+  .privacy-policy h2,
+  .terms-of-service h2 {
+    margin-bottom: 40px;
+  }
+  
+  section p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* ==========================================================================
+     Footer Section
+     ========================================================================== */
+  footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  footer p {
+    margin-bottom: 10px;
+  }
+  
+  footer nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+  }
+  
+  footer nav ul li {
+    margin: 0 15px;
+  }
+  
+  footer nav ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  footer nav ul li a:hover {
+    color: var(--primary-color);
+  }
+  
+  @media (max-width: 768px) {
+    footer nav ul {
+      flex-direction: column;
+      margin-top: 20px;
+    }
+    footer nav ul li {
+      margin: 10px 0;
+    }
+  }
+  
+  
