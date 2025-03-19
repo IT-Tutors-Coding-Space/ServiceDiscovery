@@ -1,3 +1,4 @@
+
 /* General Reset */
 * {
     margin: 0;
@@ -12,201 +13,48 @@ body {
     line-height: 1.6;
 }
 
-/* Navigation Bar */
-
-nav {
-    height: auto;
-    width: 100%;
-    display: flex;
-    flex-wrap: nowrap; /* Ensure items stay in a row */
-    justify-content: space-between;
-    background-color: #c4c1c1;
-    color:#333;
-    align-items: center;
-    padding: 10px 20px;
-    overflow: hidden; /* Prevents scrolling */
-  }
-  nav > * { /* Apply to direct children */
-    display: flex;
-    align-items: center;
-    gap: 15px; /* Add spacing between items */
-    flex: 1;
-  }
-  .nav ul {
-    display: flex;
-    flex-wrap: nowrap; /* Ensure items stay in a row */
-    justify-content: space-between;
-    list-style: none;
-    padding: 0;
-    
+/* Footer Styles */
+footer {
+    background-color: #333; /* Dark background for footer */
+    color: #fff; /* Light text for contrast */
+    padding: 1rem 0;  /* Reduced padding for a more compact look */
+    text-align: center; /* Ensures text is centered */
+    width: 100%;  /* Full width */
 }
 
-.nav ul li {
-    margin: 10px; /* Adds spacing between items */
-}    
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
-  .menu {
-    display: none;
-    list-style: none;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background: #333;
-    text-align: center;
-    padding: 10px 0;
-    color: white;
+/* Footer Content Styling */
+footer .footer-content {
+    max-width: 1000px;  /* Ensuring a good width for readability */
+    margin: 0 auto;     /* Center-align footer content */
+    padding: 0 15px;    /* Added some horizontal padding to keep text away from edge */
+    text-align: center; /* Ensures text inside the footer-content div is also centered */
 }
 
-.menu li {
-    padding: 10px;
-}
-
-.menu li a {
-    color: rgb(41, 40, 40);
-    text-decoration: none;
-    font-size: 18px;
-    display: block;
-}
-
-.menu li a:hover {
-    color: rgb(6, 158, 6);
-}
-.checkbtn {
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
-}
-
-#check {
-    display: none;
-}
-
-/* Show menu when checkbox is checked */
-#check:checked ~ .menu {
-    display: block;
-}
-
-/* Hover Effect */
-.checkbtn:hover {
-    color: #ffcc00;
-}
-
-/* Responsive */
-@media (min-width: 768px) {
-    .checkbtn {
-        display: none;
-    }
-    .menu {
-        display: flex;
-        position: static;
-        width: auto;
-        background: none;
-        color: white;
-    }
-    .menu li {
-        padding: 0 15px;
-    }
-
-}
-/* Container Styles */
-.container {
-    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-    padding: 2rem; /* Use rem for scalable padding */
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Use min-height to ensure it covers the viewport */
-    width: 100%;
-    box-sizing: border-box; /* Ensure padding is included in width/height */
-}
-
-/* Form Container Styles */
-.form-container {
-    text-align: center;
-    max-width: 400px; /* Limit form width for better readability */
-    width: 100%;
-}
-
-/* Form Header Styles */
-.form h2 {
-    margin-bottom: 1.5rem; /* Use rem for scalable spacing */
-    color: #333;
-    font-size: 1.75rem; /* Slightly larger font size for headings */
-}
-
-/* Input Group Styles */
-.input-group {
-    margin-bottom: 1.25rem; /* Consistent spacing */
-    text-align: left;
-}
-
-.input-group label {
-    display: block;
-    font-weight: 600; /* Semi-bold for better readability */
-    margin-bottom: 0.5rem;
-    color: #555;
-    font-size: 0.9rem; /* Slightly smaller font size for labels */
-}
-
-.input-group input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+footer p {
     font-size: 1rem;
-    transition: border-color 0.3s ease; /* Smooth transition for focus */
+    color: #fff;
+    margin: 0.5rem 0;  /* Vertical spacing between lines */
 }
 
-.input-group input:focus {
-    border-color: #4caf50; /* Highlight input on focus */
-    outline: none; /* Remove default outline */
-}
-
-/* Button Styles */
-.btn {
-    width: 100%;
-    background-color: #4caf50;
-    color: white;
-    padding: 0.75rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
-}
-
-.btn:hover {
-    background-color: #45a049;
-    transform: translateY(-2px); /* Slight lift on hover */
-}
-
-.btn:active {
-    transform: translateY(0); /* Reset on click */
-}
-
-/* Paragraph Styles */
-p {
-    margin-top: 1rem;
-    color: #666;
-    font-size: 0.9rem; /* Slightly smaller font size for paragraphs */
-}
-
-/* Link Styles */
-a {
-    color: #4caf50;
+footer a {
+    color: #4caf50; /* Green color for links */
     text-decoration: none;
-    font-weight: 600; /* Make links stand out */
-    transition: color 0.3s ease; /* Smooth color transition */
+    font-weight: bold;  /* Bold for emphasis */
+    transition: color 0.3s ease;
 }
 
-a:hover {
-    color: #45a049; /* Darker green on hover */
+footer a:hover {
+    color: #8bc34a;  /* Lighter green on hover */
+}
+
+/* Additional Styling for Links */
+footer a:active {
+    color: #4caf50;  /* Maintains green when clicked */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    footer p {
+        font-size: 0.9rem;  /* Slightly smaller font on smaller screens */
+    }
 }

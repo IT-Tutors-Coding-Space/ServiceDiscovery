@@ -1,82 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Client Login - Service Connect</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <link rel="stylesheet" href="/Assets/css/login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Login - Service Connect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="/Assets/css/login.css">
 </head>
 <body>
-   <!-- Skip link for accessibility -->
-   <a href="#login-form" class="skip-link">Skip to login</a>
-  <!-- Header Section with Navigation -->
-  <header>
-    <nav>
-    <div class="logo">SERVICE CONNECT</div>
-      <input type="checkbox" id="check"> 
-      <label for="check" class="checkbtn">
-         <i class="fas fa-bars"></i>
-      </label>
-      
-      <ul class="menu">
-          <li><a class="active" href="/pages/client-login.html">Client Login</a></li>
-          <li><a href="/pages/index.html">Home</a></li>
-          
-          <li><a href="/pages/provider-login.html">Provider Login</a></li>
-          <li><a href="/pages/about.html">About</a></li>
-          <li><a href="/pages/contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Client Login Form Section -->
-  <section class="login-section">
-    <div class="container">
-      <h2>Client Login</h2>
-      <p>Please fill out this form with the required information</p>
-      <form action="/pages/client-login.php" method="post" class="login-form" id="login-form">
-        <fieldset>
-          
-          <label for="email">Enter Your Email:</label>
-          <input id="email" name="email" type="email" required />
+    <!-- Header Section with Navigation -->
+    <header>
+        <nav>
+            <div class="logo">SERVICE CONNECT</div>
+            <input type="checkbox" id="check"> 
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <ul class="menu">
+                <li><a class="active" href="/pages/index.html">Home</a></li>
+                <li><a href="/pages/client-login.html">Client Login</a></li>
+                <li><a href="/pages/provider-login.html">Provider Login</a></li>
+                <li><a href="/pages/about.html">About</a></li>
+                <li><a href="/pages/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-          <label for="password">Enter your Password:</label>
-          <input id="password" name="password" type="password" 
-                 pattern="[A-Za-z0-9!@#$%^&*]{8,}" required 
-                 title="Password must be at least 8 characters long and include letters, numbers, and special characters." />
-        </fieldset>
+    <!-- Main Content Section -->
+    <main id="main-content">
+        <section class="login-section">
+            <div class="container">
+                <form action="client_login.php" method="POST" class="login-form">
+                    <h2>Provider Login</h2>
+                    <fieldset>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email">
+                    </fieldset>
+                    <fieldset>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required placeholder="Enter your password">
+                    </fieldset>
+                    <input type="submit" value="Login">
+                    <p>Don't have an account? <a href="/pages/client-signup.html">Sign up here</a></p>
+                </form>
+            </div>
+        </section>
+    </main>
 
-        <fieldset>
-          <legend>Account type (Required)</legend>
-          <label><input id="requester-account" type="radio" name="account-type" checked /> Service Requester</label>
-          <label><input id="provider-account" type="radio" name="account-type" /> Service Provider</label>
-        </fieldset>
-
-         <p>Don't have an account? <a href="/pages/index.html">Sign Up</a></p>
-
-      <label for="terms-and-conditions">
-         <input id="terms-and-conditions" type="checkbox" required name="terms-and-conditions" />
-          I accept the <a href="/pages/terms.html">terms and conditions</a>
-      </label>
-
-      <input type="submit" value="Login" class="submit-btn" />
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer Section -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Service Connect. All rights reserved.</p>
-      <nav>
-        <ul>
-          <li><a href="/pages/privacy.html">Privacy Policy</a></li>
-          <li><a href="/pages/terms.html">Terms of Service</a></li>
-        </ul>
-      </nav>
-    </div>
-  </footer>
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Service Connect. All Rights Reserved.</p>
+            <p><a href="/pages/privacy-policy.html">Privacy Policy</a> | <a href="/pages/terms-of-service.html">Terms of Service</a></p>
+        </div>
+    </footer>
 </body>
 </html>
