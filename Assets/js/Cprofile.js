@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     fetch("/ServiceDiscovery/php/Cprofile.php")
-        .then(response => response.json())
-        .then(data => {
+        .then(response => {
+            if (!response.ok) throw new Error(`Network response was not ok: ${response.status}`);
+            return response.json();
+        })
+        .then(data => { 
             if (data.error) {
                 alert(data.error);
                 window.location.href = "/ServiceDiscovery/pages/Home/login.php";
@@ -24,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             setTextContent("customer-address", data.address || "Not provided"); // Updated to match HTML ID
 
             // Remove profile image skeleton
-            document.querySelector(".profile-pic").classList.remove("skeleton");
+            document.querySelector(".profile-pic")?.classList.remove("skeleton");
         })
         .catch(error => {
             console.error("Error fetching profile:", error);
