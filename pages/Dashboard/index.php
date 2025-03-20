@@ -35,7 +35,7 @@
                 
             </button>
             <div class="profile-dropdown" id="profile-dropdown">
-                <a href="#" onclick="navigateTo('profile')" style="color:black">👤 Profile</a>
+                <a href="#" data-page="profile" onclick="navigateTo('profile')" style="color:black">👤 Profile</a>
                 <a href="#" onclick="logout()" style="color:red">↻ Logout</a>
             </div>
         </div>
