@@ -70,4 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         redirectWithError("An error occurred. Please try again.",BASE_PATH. "Home/signup.php");
     }
 }
+header("Location" .BASE_PATH."/Home/signup.php");
+exit();
+}
 ?>
