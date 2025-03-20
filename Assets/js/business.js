@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function logout(){
         localStorage.removeItem('userToken');
         sessionStorage.clear();
-        loadPage("/ServiceDiscovery/pages/Home/login.php");
+        loadPage("/ServiceDiscovery/pages/php/logout.php");
     }
 
     function loadPage(url){
