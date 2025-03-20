@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if (!isset($_SESSION['id']) || $_SESSION['role'] !== "Business Owner") {
+        header("Location: /ServiceDiscovery/pages/Home/login.php");
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +17,7 @@
 <body>
     <h1>Logout</h1>
     <p>You have been logged out.</p>
-    <a href="/ServiceDiscovery/pages/index.html">Login</a>
+    <a href="/ServiceDiscovery/pages/Home/index.html">Login</a>
 
     
 </body>

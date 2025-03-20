@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if (!isset($_SESSION['id']) || $_SESSION['role'] !== "Business Owner") {
+        header("Location: /ServiceDiscovery/pages/Home/login.php");
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
