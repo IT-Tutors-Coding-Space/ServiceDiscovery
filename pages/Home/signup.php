@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +20,14 @@
                 <img src="/ServiceDiscovery/Assets/images/hero-bg.png" alt="Logo" width="80">
                 <h2>Create Your Account</h2>
                 <p>Fill in your details to sign up</p>
+
+                <!-- Display error message -->
+                 <?php if(!isset($_SESSION['error']) && !empty($_SESSION['error'])): ?>
+                    <div id="error-message" class="error-message">
+                        <?php echo $_SESSION['error']; ?>
+                        <?php unset($_SESSION['error']); ?>
+                    </div>
+                <?php endif; ?>
 
 
                 <form action="http://localhost/ServiceDiscovery/php/sign_up.php" method="POST">
