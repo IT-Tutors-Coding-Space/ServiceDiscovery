@@ -66,8 +66,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: " . BASE_PATH . "Home/login.php");
         exit();
     } else {
-        error_log("Database error: " . print_r($stmt->errorInfo(), true)); // Log the error
-        redirectWithError("An error occurred. Please try again.",BASE_PATH. "Home/signup.php");
+        $_SESSION['error'] = "An error occurred. Please try again";
+        error_log("Database error:" .print_r($stmt->errorInfo(), true));
+    }
     }
 }
 header("Location" .BASE_PATH."/Home/signup.php");
