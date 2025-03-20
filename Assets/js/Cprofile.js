@@ -8,18 +8,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Remove skeleton effect by replacing placeholders with actual data
-            document.getElementById("customer-name").innerText = data.name;
-            document.getElementById("customer-name").classList.remove("skeleton-text");
+            // Function to safely update elements
+            const setTextContent = (id, text) => {
+                let element = document.getElementById(id);
+                if (element) {
+                    element.innerText = text;
+                    element.classList.remove("skeleton-text");
+                }
+            };
 
-            document.getElementById("customer-email").innerText = data.email;
-            document.getElementById("customer-email").classList.remove("skeleton-text");
-
-            document.getElementById("customer-contact").innerText = data.phone || "Not provided";
-            document.getElementById("customer-contact").classList.remove("skeleton-text");
-
-            document.getElementById("customer-location").innerText = data.address || "Not provided";
-            document.getElementById("customer-location").classList.remove("skeleton-text");
+            // Update UI with user data
+            setTextContent("customer-name", data.username);
+            setTextContent("customer-email", data.email);
+            setTextContent("customer-phone", data.phone || "Not provided"); // Updated to match HTML ID
+            setTextContent("customer-address", data.address || "Not provided"); // Updated to match HTML ID
 
             // Remove profile image skeleton
             document.querySelector(".profile-pic").classList.remove("skeleton");
