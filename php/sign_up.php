@@ -21,38 +21,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $allowed_roles = ["Customer", "Business Owner"];
 
+    $_SESSION['error'] = "";
+
     if (!in_array($role, $allowed_roles)) {
-        redirectWithError("Invalid role.", BASE_PATH . "Home/signup.php");
+        $_SESSION['error'] = "Invalid role.";
     }
-
     // Check if all fields are required
-    if (empty($username) || empty($email) || empty($password) || empty($confirmPassword) || empty($role)) {
-        redirectWithError("All fields are required.",BASE_PATH. "Home/signup.php");
+   elseif (empty($username) || empty($email) || empty($password) || empty($confirmPassword) || empty($role)) {
+       $_SESSION['error'] = "All fields are required.";
     }
-
     // Validate email format
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        redirectWithError("Invalid email format.",BASE_PATH. "Home/signup.php");
+    elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+       $_SESSION['error'] = "Invalid email format.";
     }
-
     // Validate username length
-    if (strlen($username) < 3 || strlen($username) > 50) {
-        redirectWithError("Username must be between 3 and 50 characters.", BASE_PATH ."Home/signup.php");
+    elseif (strlen($username) < 3 || strlen($username) > 50) {
+       $_SESSION['error'] = "Username must be between 3 and 50 characters.";
     }
-
     // Validate passwords match
-    if ($password !== $confirmPassword) {
-        redirectWithError("Passwords do not match.",BASE_PATH. "Home/signup.php");
-    }
-
+    elseif ($password !== $confirmPassword) {
+        $_SESSION['error'] = "Passwords do not match.";
+    } else{
     // Check if email already exists
-    $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT id FROM user WHERE email = ?");
     $stmt->bindParam(1, $email, PDO::PARAM_STR);
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
-        redirectWithError("Email is already in use.",BASE_PATH. "Home/signup.php");
-    }
+        $_SESSION['error'] = "Email is already in use";
+    } else{
 
     // Hash password for security
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
