@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
     // Insert user into the database
-    $stmt = $conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO user (username, email, password, role) VALUES (?, ?, ?, ?)");
     $stmt->bindParam(1, $username, PDO::PARAM_STR);
     $stmt->bindParam(2, $email, PDO::PARAM_STR);
     $stmt->bindParam(3, $hashedPassword, PDO::PARAM_STR);
