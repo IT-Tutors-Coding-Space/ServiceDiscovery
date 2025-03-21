@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     }
 }
-header("Location" .BASE_PATH."/Home/signup.php");
+header("Location" .BASE_PATH."Home/signup.php");
 exit();
 }
 ?>
