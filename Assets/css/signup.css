@@ -134,3 +134,18 @@ a:hover {
     80% { opacity: 1; }
     100% { opacity: 0; display: none; }
 }
+/* Error message style */
+.error-message {
+    background-color: #f44336; /* Red */
+  }
+  
+  /* Success message style */
+  .success-message {
+    background-color: #4CAF50; /* Green */
+  }
+  
+  /* Show message when active */
+  .show {
+    display: block;
+    opacity: 1;
+  }
