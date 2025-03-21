@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     try {
         // Prepare and execute SQL query
-        $stmt = $conn->prepare("SELECT id, email, password, role FROM users WHERE email = ? AND role = ?");
+        $stmt = $conn->prepare("SELECT id, email, password, role FROM user WHERE email = ? AND role = ?");
         $stmt->execute([$email, $role]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC); // Fetch the user
 
