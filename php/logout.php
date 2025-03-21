@@ -1,9 +1,18 @@
 <?php
 session_start();
 require 'conn.php';
-$_SESSION = [];
+
+if (isset($_SESSION['id'])) {
+    $sessionId = session_id();
+
+    $stmt = $conn->prepare("DELETE FROM session WHERE session_id = ?");
+    $stmt->execute([$sessionId]);
+}
+
+session_unset();
 session_destroy();
-setcookie(session_name(),'',time() - 3600, '/');
-header("Location: " . BASE_PATH . "Home/login.php");
+
+echo json_encode(["success" => true]);
 exit();
+
 ?>

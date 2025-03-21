@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($user && password_verify($password, $user['password'])) {
 
             session_regenerate_id(true);
+            $sessionId = session_id();
 
             // Secure session storage
             $_SESSION['id'] = (int) $user['id'];
@@ -52,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if ($user['role'] === "Customer") {
                 header("Location:" . BASE_PATH . "Customer/profile.php");
             } elseif ($user['role'] === "Business Owner") {
-                header("Location: " . BASE_PATH . "Dashboard/business_dashboard.php");
+                header("Location: " . BASE_PATH . "Dashboard/index.php");
             }
             exit();
         } else {
