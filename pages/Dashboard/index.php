@@ -1,7 +1,7 @@
 <?php
-    session_start();
+    require_once "../../php/session_handler.php";
 
-    if (!isset($_SESSION['id']) || $_SESSION['role'] !== "Business Owner") {
+    if (!isBusinessOwner()) {
         header("Location: /ServiceDiscovery/pages/Home/login.php");
         exit();
     }
