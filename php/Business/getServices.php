@@ -1,17 +1,23 @@
 <?php
-session_start();
-require '/php/conn.php';
+require_once "db.php";
+require_once "session_handler.php";
 
-if (!isset($_SESSION['id'])) {
-    echo json_encode(["error" => "Unauthorized"]);
+if (!isBusinessOwner()) {
+    echo json_encode(["success" => false, "message" => "Unauthorized"]);
     exit();
 }
 
-$business_id = $_SESSION['id'];
+$owner_id = $_SESSION['id'];
+$sql = "SELECT * FROM Services WHERE owner_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $owner_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$services = [];
 
-$stmt = $conn->prepare("SELECT id, name, description FROM services WHERE business_id = ?");
-$stmt->execute([$business_id]);
-$services = $stmt->fetchAll(PDO::FETCH_ASSOC);
+while ($row = $result->fetch_assoc()) {
+    $services[] = $row;
+}
 
-echo json_encode($services);
+echo json_encode(["success" => true, "services" => $services]);
 ?>
