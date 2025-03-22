@@ -1,45 +1,55 @@
 <?php
-class MySessionHandler extends SessionHandler {
-    private $db;
+session_start();
+require 'conn.php';
 
-    public function open(string $savePath, string $sessionName): bool {
-        try {
-            $this->db = new PDO("mysql:host=localhost;dbname=service_connect", "root", "", [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-            ]);
-            return true;
-        } catch (PDOException $e) {
-            error_log("SessionHandler DB Connection Error: " . $e->getMessage());
-            return false;
-        }
-    }
+// Set session timeout (e.g., 30 minutes)
+$timeout = 30 * 60; // 30 minutes in seconds
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $timeout)) {
+    session_unset();
+    session_destroy();
+    header("Location:".BASE_PATH." /Home/login.php");
+    exit();
+}
+$_SESSION['LAST_ACTIVITY'] = time(); // Update last activity time
 
-    public function read($sessionId): string {
-        $stmt = $this->db->prepare("SELECT data FROM sessions WHERE session_id = ?");
-        $stmt->execute([$sessionId]);
-        return $stmt->fetchColumn() ?: '';
-    }
+/**
+ * Check if the user is logged in
+ */
+function isLoggedIn() {
+    return isset($_SESSION['id']);
+}
 
-    public function write($sessionId, $data): bool {
-        $stmt = $this->db->prepare("INSERT INTO sessions (session_id, data, last_activity) 
-                                    VALUES (?, ?, NOW()) 
-                                    ON DUPLICATE KEY UPDATE data = ?, last_activity = NOW()");
-        return $stmt->execute([$sessionId, $data, $data]);
-    }
+/**
+ * Check if user is business owner
+ */
+function isBusinessOwner() {
+    return isLoggedIn() && $_SESSION['role'] === "Business Owner";
+}
 
-    public function destroy($sessionId): bool {
-        $stmt = $this->db->prepare("DELETE FROM sessions WHERE session_id = ?");
-        return $stmt->execute([$sessionId]);
-    }
+/**
+ * Check if user is a customer
+ */
+function isCustomer() {
+    return isLoggedIn() && $_SESSION['role'] === "Customer";
+}
 
-    public function gc($maxlifetime): int {
-        $stmt = $this->db->prepare("DELETE FROM sessions WHERE last_access < NOW() - INTERVAL $maxlifetime SECOND");
-        $stmt->execute();
-        return $stmt->rowCount();
+/**
+ * Force login to access a page
+ */
+function requireLogin() {
+    if (!isLoggedIn()) {
+        header("Location:".BASE_PATH." /Home/login.php");
+        exit();
     }
 }
 
-$handler = new MySessionHandler();
-session_set_save_handler($handler, true);
-session_start();
+/**
+ * Logout function
+ */
+function logout() {
+    session_unset();
+    session_destroy();
+    header("Location:".BASE_PATH." /Home/login.php");
+    exit();
+}
 ?>
