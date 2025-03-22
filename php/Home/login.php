@@ -3,8 +3,8 @@
 session_start();
 
  // Include the session handler
-require 'session_handler.php';
-require 'conn.php'; // Ensure you have a proper database connection
+require '/php/session_handler.php';
+require '/php/conn'; // Ensure you have a proper database connection
 
 
 if (session_status() !== PHP_SESSION_NONE) {

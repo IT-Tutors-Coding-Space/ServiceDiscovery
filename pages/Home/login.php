@@ -42,7 +42,7 @@ if(isset($_SESSION['success'])){
           <p class="error-message"><?= $_SESSION['error']; unset($_SESSION['error']); ?></p>
       <?php endif; ?>
       
-        <form action="http://localhost/ServiceDiscovery/php/login.php" method="POST">
+        <form action="http://localhost/ServiceDiscovery/php/Home/login.php" method="POST">
           <label for="email">Email</label>
           <input type="text" id="email" name="email" placeholder="Email Address" required>
 
