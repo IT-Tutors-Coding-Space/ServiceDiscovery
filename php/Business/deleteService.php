@@ -1,16 +1,28 @@
 <?php
-session_start();
-require '/php/conn.php';
+require_once "db.php";
+require_once "session_handler.php";
 
-if (!isset($_SESSION['id'])) {
-    echo json_encode(["error" => "Unauthorized"]);
+if (!isBusinessOwner()) {
+    echo json_encode(["success" => false, "message" => "Unauthorized"]);
     exit();
 }
 
-$id = $_GET['id'];
+$data = json_decode(file_get_contents("php://input"), true);
+if (!isset($data['id'])) {
+    echo json_encode(["success" => false, "message" => "Missing service ID"]);
+    exit();
+}
 
-$stmt = $conn->prepare("DELETE FROM services WHERE id = ? AND business_id = ?");
-$stmt->execute([$id, $_SESSION['id']]);
+$owner_id = $_SESSION['id'];
+$service_id = intval($data['id']);
 
-echo json_encode(["success" => "Service deleted"]);
+$sql = "DELETE FROM Services WHERE id = ? AND owner_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("ii", $service_id, $owner_id);
+
+if ($stmt->execute()) {
+    echo json_encode(["success" => true, "message" => "Service deleted successfully"]);
+} else {
+    echo json_encode(["success" => false, "message" => "Error deleting service"]);
+}
 ?>
