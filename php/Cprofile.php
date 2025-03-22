@@ -10,14 +10,15 @@ require 'conn.php'; // Database connection
 if (!isset($_SESSION['id'])) {
     http_response_code(401); // Unauthorized
     echo json_encode(["error" => "Unauthorized access. Please log in."]);
+    header("Location: /ServiceDiscovery/pages/Home/login.php");
     exit();
 }
 
 try {
     $userId = (int) $_SESSION['id'];
     // Fetch user details from the database
-    $stmt = $conn->prepare("SELECT name, email FROM users WHERE id = ?");
-    $stmt->execute([$_SESSION['id']]);
+    $stmt = $conn->prepare("SELECT username, email, phone, address FROM user WHERE id = ? LIMIT 1");
+    $stmt->execute([$userId]);
 
     if ($stmt->rowCount() > 0) {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
