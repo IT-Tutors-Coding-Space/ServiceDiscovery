@@ -13,33 +13,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Listings</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/manage_listings.js" defer></script>
+    <link rel="stylesheet" href="/Assets/css/Dashboard/listings.css">
 </head>
 <body>
 
-<h2>Manage Your Listings</h2>
+<section class="manage-listings">
+    <div class="listing-header">
+        <h2>Manage Listings</h2>
+        <button class="add-listing-btn" onclick="openAddListingModal()">+ Add Listing</button>
+    </div>
 
-<!-- Post New Service Form -->
-<form id="postServiceForm">
-    <input type="text" id="serviceName" placeholder="Service Name" required>
-    <textarea id="serviceDescription" placeholder="Service Description" required></textarea>
-    <button type="submit">Post Service</button>
-</form>
-
-<!-- Service Listings -->
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody id="servicesList">
-        <!-- Services will be loaded here -->
-    </tbody>
-</table>
+    <input type="text" id="search-listings" placeholder="Search Listings..." oninput="filterListings()">
+    
+    <table class="listings-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Last Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="listings-body">
+            <!-- Dynamic Data -->
+        </tbody>
+    </table>
+</section>
 
 </body>
+<script src="/Assets/js/manage_listings.js"></script>
+
 </html>
