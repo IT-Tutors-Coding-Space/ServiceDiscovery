@@ -32,8 +32,7 @@
                 <th>Category</th>
                 <th>Description</th>
                 <th>Price</th>
-                <th>Status</th>
-                <th>Last Updated</th>
+                <th>Created At</th>
                 <th>Actions</th>
             </tr>
         </thead>
