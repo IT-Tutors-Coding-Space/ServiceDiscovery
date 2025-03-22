@@ -2,7 +2,7 @@
     session_start();
 
     
-    if (!isset($_SESSION['id']) || $_SESSION['role'] !== "Customer") {
+    if (!isset($_SESSION["id"]) || $_SESSION["role"] !== "Customer") {
         header("Location: /ServiceDiscovery/pages/Home/login.php");
         exit();
     }

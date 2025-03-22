@@ -49,6 +49,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['email'] = $user['email'];
             $_SESSION['role'] = $user['role'];
 
+            // $stmt = $conn->prepare("UPDATE user SET session_id = ? WHERE id = ?");
+            // $stmt->execute([$sessionId, $user['id']]);
+
             // Redirect based on role
             if ($user['role'] === "Customer") {
                 header("Location:" . BASE_PATH . "Customer/profile.php");
