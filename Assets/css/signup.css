@@ -82,7 +82,7 @@ a:hover {
   /* Left Side - Background Image */
   .left-side {
     flex: 1;
-    background: url('/Service/Assets/images/hero-bg.png') no-repeat center center;
+    background: url('/ServiceDiscovery/Assets/images/hero-bg.png') no-repeat center center;
     background-size: cover;
     display: flex; 
     align-items: center;
@@ -118,3 +118,34 @@ a:hover {
     padding: 10px;
     margin-bottom: 10px;
 }
+.error-message {
+    background-color: #ffcccc;
+    color: #cc0000;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    animation: fadeOut 5s forwards; /* Apply fade-out animation */
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
+/* Error message style */
+.error-message {
+    background-color: #f44336; /* Red */
+  }
+  
+  /* Success message style */
+  .success-message {
+    background-color: #4CAF50; /* Green */
+  }
+  
+  /* Show message when active */
+  .show {
+    display: block;
+    opacity: 1;
+  }

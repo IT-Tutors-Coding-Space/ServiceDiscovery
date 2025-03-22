@@ -2,12 +2,12 @@
 session_start();
 // Database connection
 require "conn.php";
-
-define('BASE_PATH', '/Service/pages/Home/'); // Define base path
+// Session handler
+// require '/ServiceDiscovery/php/session_handler.php';
 
 function redirectWithError($error, $location) {
     $_SESSION['error'] = $error;
-    header("Location: " . BASE_PATH . $location);
+    header("Location:  $location ");
     exit();
 }
 
@@ -21,44 +21,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $allowed_roles = ["Customer", "Business Owner"];
 
+    $_SESSION['error'] = "";
+
     if (!in_array($role, $allowed_roles)) {
-        redirectWithError("Invalid role.", "signup.html");
+        $_SESSION['error'] = "Invalid role.";
     }
-
     // Check if all fields are required
-    if (empty($username) || empty($email) || empty($password) || empty($confirmPassword) || empty($role)) {
-        redirectWithError("All fields are required.", "signup.html");
+   elseif (empty($username) || empty($email) || empty($password) || empty($confirmPassword) || empty($role)) {
+       $_SESSION['error'] = "All fields are required.";
     }
-
     // Validate email format
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        redirectWithError("Invalid email format.", "signup.html");
+    elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+       $_SESSION['error'] = "Invalid email format.";
     }
-
     // Validate username length
-    if (strlen($username) < 3 || strlen($username) > 50) {
-        redirectWithError("Username must be between 3 and 50 characters.", "signup.html");
+    elseif (strlen($username) < 3 || strlen($username) > 50) {
+       $_SESSION['error'] = "Username must be between 3 and 50 characters.";
     }
-
     // Validate passwords match
-    if ($password !== $confirmPassword) {
-        redirectWithError("Passwords do not match.", "signup.html");
-    }
-
+    elseif ($password !== $confirmPassword) {
+        $_SESSION['error'] = "Passwords do not match.";
+    } else{
     // Check if email already exists
-    $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT id FROM user WHERE email = ?");
     $stmt->bindParam(1, $email, PDO::PARAM_STR);
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
-        redirectWithError("Email is already in use.", "signup.html");
-    }
+        $_SESSION['error'] = "Email is already in use";
+    } else{
 
     // Hash password for security
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
     // Insert user into the database
-    $stmt = $conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO user (username, email, password, role) VALUES (?, ?, ?, ?)");
     $stmt->bindParam(1, $username, PDO::PARAM_STR);
     $stmt->bindParam(2, $email, PDO::PARAM_STR);
     $stmt->bindParam(3, $hashedPassword, PDO::PARAM_STR);
@@ -66,11 +63,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         $_SESSION['success'] = "Registration successful! Please log in.";
-        header("Location: " . BASE_PATH . "login.html");
+        header("Location: " .BASE_PATH. "Home/login.php");
         exit();
     } else {
-        error_log("Database error: " . print_r($stmt->errorInfo(), true)); // Log the error
-        redirectWithError("An error occurred. Please try again.", "signup.html");
+        $_SESSION['error'] = "An error occurred. Please try again";
+        error_log("Database error:" .print_r($stmt->errorInfo(), true));
     }
+    }
+}
+header("Location" .BASE_PATH."Home/signup.php");
+exit();
 }
 ?>
