@@ -42,12 +42,12 @@ if(isset($_SESSION['success'])){
           <p class="error-message"><?= $_SESSION['error']; unset($_SESSION['error']); ?></p>
       <?php endif; ?>
       
-        <form action="http://localhost/ServiceDiscovery/php/Home/login.php" method="POST">
+        <form action="http://localhost/ServiceDiscovery/php/login.php" method="POST">
           <label for="email">Email</label>
-          <input type="text" id="email" name="email" placeholder="Email Address" required>
+          <input type="text" id="email" name="email" placeholder="Email Address" >
 
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+          <input type="password" id="password" name="password" placeholder="Enter your Password" >
           <label for="role">Role</label>
           <select id="role" name="role">
             <option value="Customer">Customer</option>
