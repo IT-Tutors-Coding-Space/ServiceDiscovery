@@ -1,5 +1,4 @@
 <?php
-define('BASE_PATH', '/ServiceDiscovery/pages/');
 
 $host = "localhost";
 $dbname = "service_connect";
