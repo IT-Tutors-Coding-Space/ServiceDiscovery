@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'conn.php';
+define("BASE_PATH" , "/ServiceDiscovery/pages/");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data and sanitize input

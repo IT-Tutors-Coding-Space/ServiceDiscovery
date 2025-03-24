@@ -39,7 +39,7 @@ if(isset($_SESSION['success'])){
                 <?php endif; ?>
 
 
-                <form action="http://localhost/ServiceDiscovery/php/Home/sign_up.php" method="POST">
+                <form action="http://localhost/ServiceDiscovery/php/sign_up.php" method="POST">
                     <label for="username">User Name</label>
                     <input type="text" id="username" name="username" required>
 
