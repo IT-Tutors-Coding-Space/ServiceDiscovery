@@ -1,7 +1,7 @@
 <?php
-    session_start();
+    require_once "../../php/session_handler.php";
 
-    if (!isset($_SESSION['id']) || $_SESSION['role'] !== "Business Owner") {
+    if (!isBusinessOwner()) {
         header("Location: /ServiceDiscovery/pages/Home/login.php");
         exit();
     }
@@ -15,9 +15,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discovery</title>
     <link rel="stylesheet" href="/ServiceDiscovery/Assets/css/business.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
     
     <link rel="icon" type="image/png" href="/ServiceDiscovery/Assets/images/hero-bg.png">
 </head>

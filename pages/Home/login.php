@@ -2,11 +2,11 @@
 <?php
 session_start();
 if (isset($_SESSION['error'])) {
-    echo '<div class="popup-message error-message">' . $_SESSION['error'] . '</div>';
+    echo '<p class="popup-message error-message">' . $_SESSION['error'] . '</p>';
     unset($_SESSION['error']); // Clear the error message
 }
 if(isset($_SESSION['success'])){
-    echo '<div class="popup-message success-message">'. $_SESSION['success'] . '</div>';
+    echo '<p class="popup-message success-message">'. $_SESSION['success'] . '</p>';
     unset($_SESSION['success']);
 }
 ?>

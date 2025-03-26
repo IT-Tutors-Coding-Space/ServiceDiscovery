@@ -1,8 +1,8 @@
 <?php
-    session_start();
+    require_once "../../php/session_handler.php";
 
     
-    if (!isset($_SESSION["id"]) || $_SESSION["role"] !== "Customer") {
+    if (!isCustomer()) {
         header("Location: /ServiceDiscovery/pages/Home/login.php");
         exit();
     }
