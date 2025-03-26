@@ -12,9 +12,9 @@
     --primary-color-dark: #45a049;
     --secondary-color: #f44336;
     --text-color: #333;
-    --bg-color: #f4f4f9;
+    --bg-color: #fbfbfd;
     --header-bg: #fff;
-    --footer-bg: #333;
+    --footer-bg: #fdfbfb;
     --footer-text: #fff;
     --max-width: 1500px;
     --transition-speed: 0.3s;
@@ -40,120 +40,14 @@
     height: auto;
   }
   
-  /* ========================================================================== 
-     Header & Navigation
-     ========================================================================== */
-  header {
-    font-family: Arial, sans-serif;
-    background-color: #c4c1c1;
-    border-bottom: 1px solid #c0bcbc;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav {
-    height: auto;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    background-color: #c4c1c1;
-    color: #333;
-    align-items: center;
-    padding: 10px 20px;
-    overflow: hidden;
-  }
-  
-  .nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-  }
-  
-  .nav ul li {
-    margin: 10px;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
-  
-  .menu {
-    display: none;
-    list-style: none;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background: #333;
-    text-align: center;
-    padding: 10px 0;
-    color: white;
-  }
-  
-  .menu li {
-    padding: 10px;
-  }
-  
-  .menu li a {
-    color: rgb(41, 40, 40);
-    text-decoration: none;
-    font-size: 18px;
-    display: block;
-  }
-  
-  .menu li a:hover {
-    color: rgb(6, 158, 6);
-  }
-  
-  .checkbtn {
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
-  }
-  
-  #check {
-    display: none;
-  }
-  
-  /* Show menu when checkbox is checked */
-  #check:checked ~ .menu {
-    display: block;
-  }
-  
-  /* Hover Effect */
-  .checkbtn:hover {
-    color: #ffcc00;
-  }
-  
-  /* Responsive */
-  @media (min-width: 768px) {
-    .checkbtn {
-      display: none;
-    }
-    .menu {
-      display: flex;
-      position: static;
-      width: auto;
-      background: none;
-      color: white;
-    }
-    .menu li {
-      padding: 0 15px;
-    }
-  }
   
   /* ========================================================================== 
      Hero Section (Home Page)
      ========================================================================== */
   .hero {
-    background: url('/Images/pic\(1\).jpg') no-repeat center center/cover;
-    color: black;
-    padding: 100px 20px;
+    /* background: url('/assets/images/hero-bg.png') no-repeat center center/cover; */
+    color: #0a0a0a;
+    padding: 100px 0;
     text-align: center;
     height: auto;
     align-items: center;
@@ -198,251 +92,25 @@
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
-    font-size: 1em;
-    font-weight: bold;
-    transition: background var(--transition-speed), transform 0.2s ease-in-out;
-  }
-  
-  .cta-buttons .cta-btn:hover {
     transition: background var(--transition-speed);
-    background-color: #32CD32;
-    transform: scale(1.05); /* Slight zoom effect */
   }
-  
-  /* Mobile Responsiveness */
-  @media (max-width: 768px) {
-    .hero {
-      padding: 80px 20px;
-      min-height: 60vh;
-    }
-  
-    .hero h2 {
-      font-size: 2em; /* Reduce heading size */
-    }
-  
-    .hero p {
-      font-size: 1em;
-    }
-  
-    .cta-buttons {
-      flex-direction: column; /* Stack buttons vertically */
-      gap: 10px;
-    }
-  
-    .cta-buttons .cta-btn {
-      width: 100%; /* Make buttons full width */
-      text-align: center;
-    }
+  .cta-buttons .cta-btn:hover {
+    background-color: var(--primary-color-dark);
   }
-  
-  /* ========================================================================== 
-     How It Works Section (Home Page)
-     ========================================================================== */
-  .how-it-works {
-    padding: 60px 0;
-    background-color: #fff;
-    text-align: center;
-  }
-  
-  .how-it-works h2 {
-    margin-bottom: 40px;
-  }
-  
-  .steps {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  
-  .step {
-    flex: 0 0 30%;
-    background-color: #c4c1c1;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-  }
-  
-  .step h3 {
-    margin-top: 0;
-  }
-  
-  /* ========================================================================== 
-   Contact Page Section (Home Page)
-   ========================================================================== */
-.contact-section {
-  padding: 60px 0;
-  background-color: #fff;
-  text-align: center;
-}
-
-.contact-section h2 {
-  margin-bottom: 20px;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--primary-color);
-}
-
-.contact-section p {
-  margin-bottom: 30px;
-  font-size: 1.2em;
-  color: var(--text-color);
-}
-
-.contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: left;
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.contact-form label {
-  display: block;
-  margin: 10px 0 5px;
-  font-weight: bold;
-  color: var(--text-color);
-}
-
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  margin-bottom: 15px;
-}
-
-.contact-form textarea {
-  resize: vertical;
-}
-
-.contact-form button {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  background-color: var(--primary-color);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background var(--transition-speed);
-}
-
-.contact-form button:hover {
-  background-color: var(--primary-color-dark);
-}
-
-/* ========================================================================== 
-   Responsive Styles for Contact Section
-   ========================================================================== */
-@media (max-width: 768px) {
-  .contact-section h2 {
-    font-size: 2rem;
-  }
-
-  .contact-form {
-    padding: 15px;
-    width: 90%;
-  }
-
-  .contact-form input[type="text"],
-  .contact-form input[type="email"],
-  .contact-form textarea {
-    font-size: 14px;
-  }
-}
-
- /* ========================================================================== 
-   Footer Section
-   ========================================================================== */
-.footer {
-  background-color: #333;
-  color: #fff;
-  padding: 30px 0;
-  text-align: center;
-}
-
-.footer .footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.footer .footer-contact {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.footer .footer-details {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-
-.footer .footer-details span {
-  margin: 5px 0;
-}
-
-.footer .footer-email,
-.footer .footer-phone {
-  font-size: 1rem;
-}
-
-.footer-bottom {
-  margin-top: 20px;
-  font-size: 0.9rem;
-  color: #ccc;
-}
-
-.footer .footer-bottom p {
-  margin: 0;
-}
-
-/* ========================================================================== 
-   Responsive Styles for Footer
-   ========================================================================== */
-@media (max-width: 768px) {
-  .footer .footer-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer .footer-details {
-    text-align: center;
-    margin-top: 15px;
-  }
-
-  .footer .footer-email,
-  .footer .footer-phone {
-    font-size: 1.1rem;
-  }
-}
-
-  
-  /* ========================================================================== 
+  /* ==========================================================================
      Responsive Styles
      ========================================================================== */
   @media (max-width: 768px) {
-  
-    .steps {
-      flex-direction: column;
-      align-items: center;
+    /* Stack header elements */
+    header h1,
+    header nav ul {
+      float: none;
+      text-align: center;
     }
-  
-    .step {
-      flex: 0 0 80%;
+    header nav ul li {
+      display: block;
+      margin: 10px 0;
     }
-  
-    .testimonial-cards .card {
-      flex: 0 0 90%;
-    }
+    
   }
   
