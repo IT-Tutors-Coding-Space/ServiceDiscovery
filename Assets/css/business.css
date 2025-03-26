@@ -228,21 +228,7 @@ th {
     border-radius: 5px;
 }
 
-/* Calendar Section */
-.iframe-container {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%; /* Aspect ratio: 16:9 */
-    overflow: hidden;
-}
 
-.iframe-calendar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
 
 /* Utility classes */
 .hidden {

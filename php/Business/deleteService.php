@@ -1,6 +1,6 @@
 <?php
-require_once "/php/conn.php";
-require_once "/php/session_handler.php";
+require_once "/ServiceDiscovery/php/conn.php";
+require_once "/ServiceDiscovery/php/session_handler.php";
 
 if (!isBusinessOwner()) {
     echo json_encode(["success" => false, "message" => "Unauthorized"]);

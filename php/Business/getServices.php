@@ -1,6 +1,6 @@
 <?php
-require_once "db.php";
-require_once "session_handler.php";
+require_once "/ServiceDiscovery/php/conn.php";
+require_once "/ServiceDiscovery/php/session_handler.php";
 
 if (!isBusinessOwner()) {
     echo json_encode(["success" => false, "message" => "Unauthorized"]);
@@ -8,7 +8,7 @@ if (!isBusinessOwner()) {
 }
 
 $owner_id = $_SESSION['id'];
-$sql = "SELECT * FROM Services WHERE owner_id = ?";
+$sql = "SELECT * FROM services WHERE owner_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $owner_id);
 $stmt->execute();

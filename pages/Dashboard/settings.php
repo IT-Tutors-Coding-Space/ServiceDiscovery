@@ -12,10 +12,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 </head>
 <body>
-    <!-- system customization page -->
-    <h2>Settings</h2>
+    <header class="dashboard-header">
+        <div class="header-left">
+            <img src="/ServiceDiscovery/Assets/images/" alt="Logo" class="dashboard-logo">
+            <h1>Settings Page</h1>
+        </div>
+    </header>
+
 </body>
 </html>
