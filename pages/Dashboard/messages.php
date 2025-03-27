@@ -13,10 +13,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messages</title>
+    <link rel="stylesheet" href="/ServiceDiscovery/Assets/css/business.css">
+
 </head>
 <body>
-    <!-- This is a page that will help the business owner
-     manage their messages -->
-    <h2>Messages</h2>
+<header class="dashboard-header">
+        <div class="header-left">
+            <h1>Messages Page</h1>
+        </div>
+    </header>
+    <div class="main-content">
+
+    </div>
 </body>
 </html>

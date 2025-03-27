@@ -15,7 +15,7 @@ if (!isBusinessOwner()) {
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css"> -->
     <link rel="stylesheet" href="/ServiceDiscovery/Assets/css/business.css">
-    <link rel="icon" type="image/png" href="/ServiceDiscovery/Assets/images/logo-icon.png">
+    <!-- <link rel="icon" type="image/png" href="/ServiceDiscovery/Assets/images/logo-icon.png"> -->
 </head>
 <body>
     <!-- Dashboard Header -->

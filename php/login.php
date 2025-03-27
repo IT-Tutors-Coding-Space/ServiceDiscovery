@@ -4,12 +4,9 @@ require 'session_handler.php';
 require 'conn.php'; // Ensure you have a proper database connection
 
 
-// if (session_status() !== PHP_SESSION_NONE) {
-//     session_regenerate_id(true); // Secure session handling
-// }
-
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    session_start();
+
     $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
     $password = trim($_POST['password']);
     $role_name = htmlspecialchars(trim($_POST['role']), ENT_QUOTES, 'UTF-8');
@@ -55,10 +52,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Redirect based on role
             if ($role_name === "Customer") {
                 header("Location: /ServiceDiscovery/pages/Customer/profile.php");
+                exit();
             } elseif ($role_name === "Business Owner") {
                 header("Location:  /ServiceDiscovery/pages/Dashboard/index.php");
+                exit();     
             }
-            exit();
+            
         } else {
             $_SESSION['error'] = "Incorrect email or password.";
             error_log("Login failed for email: $email due to Incorrect credentials or role mismatch.");
