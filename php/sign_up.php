@@ -49,15 +49,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
                 // Insert user into the database
-                $stmt = $conn->prepare("INSERT INTO users (username, email, password, phone, location, role_id, created_at) VALUES (?, ?, ?, ?, ?, ?, NOW())");
+                $stmt = $conn->prepare("INSERT INTO users (username, email, password, role_id, created_at) VALUES (?, ?, ?, ?, NOW())");
                 $stmt->bindParam(1, $username, PDO::PARAM_STR);
                 $stmt->bindParam(2, $email, PDO::PARAM_STR);
                 $stmt->bindParam(3, $hashedPassword, PDO::PARAM_STR);
                 $stmt->bindParam(4, $phone, PDO::PARAM_STR);
-                $stmt->bindParam(5, $location, PDO::PARAM_STR);
-                $stmt->bindParam(6, $role_id, PDO::PARAM_INT);
-
+                
                 if ($stmt->execute()) {
+                    $user_id = $conn->lastInsertId();
+
+                    //insert to customer or businesses table
+                    if($role_name == 'Customer'){
+                        $stmt = $conn->prepare("INSERT INTO customers (user_id) VALUES (?)");
+                        $stmt->bindParam(1, $user_id, PDO::PARAM_INT);
+                        $stmt->execute();
+                    }elseif($role_name == 'Business Owner'){
+                        $stmt = $conn->prepare("INSERT INTO businesses (owner_id) VALUES (?)");
+                        $stmt->bindParam(1, $user_id, PDO::PARAM_INT);
+                        $stmt->execute();
+                    }
+                    
                     $_SESSION['success'] = "Registration successful! Please log in.";
                     header("Location: " . BASE_PATH . "Home/login.php");
                     exit();
