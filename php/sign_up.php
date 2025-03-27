@@ -1,7 +1,11 @@
 <?php
 session_start();
 require 'conn.php';
-define("BASE_PATH" , "/ServiceDiscovery/pages/");
+
+if(!defined('BASE_PATH')){
+   define("BASE_PATH" , "/ServiceDiscovery/pages/"); 
+}
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data and sanitize input
@@ -36,6 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (!$role_id) {
             $_SESSION['error'] = "Invalid role selected.";
+            header("Location: " . BASE_PATH . "Home/signup.php");
+            exit();
         } else {
             // Check if email already exists
             $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
@@ -53,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->bindParam(1, $username, PDO::PARAM_STR);
                 $stmt->bindParam(2, $email, PDO::PARAM_STR);
                 $stmt->bindParam(3, $hashedPassword, PDO::PARAM_STR);
-                $stmt->bindParam(4, $phone, PDO::PARAM_STR);
+                $stmt->bindParam(4, $role_id, PDO::PARAM_STR);
                 
                 if ($stmt->execute()) {
                     $user_id = $conn->lastInsertId();
@@ -68,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $stmt->bindParam(1, $user_id, PDO::PARAM_INT);
                         $stmt->execute();
                     }
-                    
+
                     $_SESSION['success'] = "Registration successful! Please log in.";
                     header("Location: " . BASE_PATH . "Home/login.php");
                     exit();
