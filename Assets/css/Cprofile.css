@@ -1,89 +1,174 @@
-body {
-    font-family: Arial, sans-serif;
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
-    background-color: #070606;
-    text-align: center;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-.profile-container {
-    max-width: 400px;
-    margin: 50px auto;
+body {
+    display: flex;
+    background: #f4f4f4;
+    color: #333;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #1e1e2d;
+    color: white;
+    height: 100vh;
     padding: 20px;
-    background: #fff;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+    position: fixed;
 }
 
-.profile-header {
+.sidebar h2 {
     text-align: center;
+    margin-bottom: 20px;
 }
 
-.profile-pic {
-    width: 100px;
-    height: 100px;
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background 0.3s ease-in-out;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li.active a {
+    background: #2a2a3c;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px);
+}
+
+/* Profile Section */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.profile-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+}
+
+.profile-card .profile-pic img {
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    margin-bottom: 10px;
+    object-fit: cover;
+    border: 3px solid #1e1e2d;
 }
 
-.profile-details {
-    text-align: left;
-    padding: 10px;
+.profile-card h3 {
+    margin-top: 15px;
+    font-size: 22px;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background: #007bff;
-    color: #fff;
+.profile-card p {
+    font-size: 16px;
+    color: #666;
+    margin: 8px 0;
+}
+
+/* Buttons */
+.profile-actions {
+    margin-top: 20px;
+}
+
+.profile-actions button {
+    padding: 10px 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+    margin: 5px;
 }
 
-button:hover {
-    background: #0056b3;
+#edit-profile-btn {
+    background: #1e88e5;
+    color: white;
 }
 
-#logout-btn {
-    background: red;
+#edit-profile-btn:hover {
+    background: #1669bb;
 }
 
-#logout-btn:hover {
-    background: darkred;
-}
-/* Skeleton loader base */
-.skeleton {
-    background: linear-gradient(100deg, #e0e0e0 30%, #f8f8f8 50%, #e0e0e0 70%);
-    background-size: 400% 100%;
-    animation: shimmer 1.5s infinite linear;
+#search-services {
+    background: #ff7043;
+    color: white;
 }
 
-/* Shimmer effect animation */
-@keyframes shimmer {
-    0% { background-position: -100% 0; }
-    100% { background-position: 100% 0; }
+#search-services:hover {
+    background: #e55a2a;
 }
 
-/* Profile image loader */
-.profile-pic.skeleton {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+    }
+
+    .profile-card {
+        width: 90%;
+    }
+}
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #2c3e50;
+    color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 20px;
 }
 
-/* Text loaders */
-.skeleton-text {
-    width: 80%;
-    height: 16px;
-    margin: 10px auto;
-    border-radius: 4px;
+.sidebar ul {
+    list-style: none;
+    padding: 0;
 }
 
-.profile-details .skeleton-text {
-    width: 60%;
-    height: 14px;
-    margin: 5px 0;
+.sidebar ul li {
+    padding: 15px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li.active a {
+    font-weight: bold;
+    background: #34495e;
+    padding: 10px;
+    border-radius: 5px;
 }

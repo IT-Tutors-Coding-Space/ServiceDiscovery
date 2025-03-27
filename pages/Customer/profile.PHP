@@ -1,11 +1,18 @@
 <?php
     require_once "../../php/session_handler.php";
 
-    
     if (!isCustomer()) {
         header("Location: /ServiceDiscovery/pages/Home/login.php");
         exit();
     }
+
+    // Fetch customer details from the session or database
+    $user_id = $_SESSION['id'];
+    require_once "../../php/conn.php";
+
+    $stmt = $conn->prepare("SELECT username, email, created_at FROM users WHERE id = ?");
+    $stmt->execute([$user_id]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -17,24 +24,31 @@
     <link rel="stylesheet" href="/ServiceDiscovery/Assets/css/Cprofile.css">
 </head>
 <body>
-    <div class="profile-container">
-        <div class="profile-header">
-             <div class="skeleton profile-pic"></div> 
-            <h2 id="customer-name" class="skeleton-text"></h2>
-            <p id="customer-email" class="skeleton-text"></p>
+
+<!-- Main Content -->
+<div class="main-content">
+    <header>
+        <h2>Customer Profile</h2>
+    </header>
+
+    <section class="profile-container">
+        <div class="profile-card">
+            <div class="profile-pic">
+                <img src="/ServiceDiscovery/Assets/images/profile1.jpg" alt="Profile Picture">
+            </div>
+            <h3><?php echo htmlspecialchars($user['username']); ?></h3>
+            <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
+            <p>Contact: <?php echo htmlspecialchars($user['phone'] ?? 'N/A'); ?></p>
+            <p>Location: <?php echo htmlspecialchars($user['address'] ?? 'N/A'); ?></p>
+            
+            <div class="profile-actions">
+                <button id="edit-profile-btn">Edit Profile</button>
+                <button id="search-services">Search Services</button>
+            </div>
         </div>
+    </section>
+</div>
 
-        <div class="profile-details">
-            <h3>Profile Information</h3>
-            <p><strong>Contact:</strong> <span id="customer-phone" class="skeleton-text"></span></p>
-            <p><strong>Location:</strong> <span id="customer-address" class="skeleton-text"></span></p>
-        </div>
-
-        <button id="edit-profile-btn">Edit Profile</button>
-        <button id="search">Search</button>
-        <button id="logout-btn">Logout</button>
-    </div>
-
-    <script src="/ServiceDiscovery/Assets/js/Cprofile.js"></script>
+<script src="/ServiceDiscovery/Assets/js/profile.js"></script>
 </body>
 </html>
