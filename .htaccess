@@ -1,0 +1,13 @@
+# <Files "/ServiceDiscovery/pages/Dashboard/index.html">
+#   AuthType Basic
+#   AuthName "Restricted Access"
+#   AuthUserFile "C:/xampp/htdocs/ServiceDiscovery/.htpasswd"  # Adjust path as needed
+#   Require valid-user
+# </Files>
+
+# <Files "/ServiceDiscovery/pages/Customer/profile.html">
+#   AuthType Basic
+#   AuthName "Restricted Access"
+#   AuthUserFile "C:/xampp/htdocs/ServiceDiscovery/.htpasswd"  # Adjust path as needed
+#   Require valid-user
+# </Files>
