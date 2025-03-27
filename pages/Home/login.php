@@ -17,6 +17,7 @@ if(isset($_SESSION['success'])){
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <title>Login - Service Discovery</title>
   <link rel="stylesheet" href="/ServiceDiscovery/Assets/css/styles.css">
   <link rel="stylesheet" href="/ServiceDiscovery/Assets/css/login.css">

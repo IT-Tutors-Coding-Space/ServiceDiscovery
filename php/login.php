@@ -52,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Redirect based on role
             if ($role_name === "Customer") {
                 header("Location: /ServiceDiscovery/pages/Customer/profile.php");
+                exit();
             } elseif ($role_name === "Business Owner") {
                 header("Location:  /ServiceDiscovery/pages/Dashboard/index.php");
                 exit();     
