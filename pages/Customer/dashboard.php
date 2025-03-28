@@ -1,19 +1,15 @@
 <?php
-    require_once "../../php/session_handler.php";
+require_once "../../php/session_handler.php";
 
-    if (!isCustomer()) {
-        header("Location: /ServiceDiscovery/pages/Home/login.php");
-        exit();
-    }
+if (!isCustomer()) {
+    exit("<p>You must be logged in as a customer.</p>");
+}
 ?>
- <!DOCTYPE html>
- <html lang="en">
- <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Dashboard</title>
- </head>
- <body>
-    
- </body>
- </html>
+
+<header>
+    <h2>Welcome to Your Dashboard</h2>
+</header>
+
+<section>
+    <p>This is your dashboard where you can manage your profile and search for services.</p>
+</section>
