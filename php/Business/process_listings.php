@@ -5,36 +5,41 @@ session_start();
 
 // Ensure valid database connection
 if (!isset($conn) || !$conn instanceof PDO) {
-    die("Database connection failed: Invalid connection object");
+    echo json_encode(["status" => "error", "message" => "Database connection failed."]);
+    exit;
 }
 
 // Ensure the request is POST
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    die("Invalid request method.");
+    echo json_encode(["status" => "error", "message" => "Invalid rrequest."]);
+    exit;
 }
 
 // Ensure the user is logged in
 if (!isset($_SESSION['id'])) {
-    die("Error: User not logged in.");
+    echo json_encode(["status" => "error", "message" => "User not logged in."]);
+    exit;
 }
+
+$user_id = $_SESSION['id'];
 
 // Check if the business ID exists in the session
 if (!isset($_SESSION['business_id']) || empty($_SESSION['business_id'])) {
     // Fetch business_id dynamically
     $query = $conn->prepare("SELECT id FROM businesses WHERE owner_id = ?");
-    $query->execute([$_SESSION['id']]);
+    $query->execute([$user_id]);
     $business_id = $query->fetchColumn();
 
-    if ($business_id) {
-        $_SESSION['business_id'] = (int) $business_id; // Store in session
-    } else {
-        die("Error: Business not found for this owner.");
+    if (!$business_id) {
+        echo json_encode(["status" => "error", "message" => "Business not found for this owner."]);
+        exit;    
     }
+    $_SESSION['business_id'] = (int) $business_id; //store in session
 }
 
-$owner_id = $_SESSION['business_id']; // Now it's safe to use
+$business_id = $_SESSION['business_id']; // Now it's safe to use
 
-// Validate form inputs
+// Validate and sanitize form inputs
 $sname = trim($_POST['listing-title'] ?? '');
 $scategory = trim($_POST['listing-category'] ?? '');
 $sprice = trim($_POST['listing-price'] ?? '');
@@ -43,16 +48,18 @@ $sdescription = trim($_POST['listing-description'] ?? '');
 
 // Basic input validation
 if (empty($sname) || empty($scategory) || empty($sprice) || empty($status) || empty($sdescription)) {
-    die("Error: All fields are required.");
+    echo json_encode(["status" => "error", "message" => "All fields are required."]);
+    exit;
 }
 
 if (!is_numeric($sprice) || $sprice < 100) {
-    die("Error: Invalid price.");
+    echo json_encode(["status" => "error", "message" => "Invalid price. Minimum is 100"]);
+    exit;
 }
 
 // Ensure business exists
 $checkBusiness = $conn->prepare("SELECT id FROM businesses WHERE id = ?");
-$checkBusiness->execute([$owner_id]);
+$checkBusiness->execute([$business_id]);
 
 if ($checkBusiness->rowCount() === 0) {
     die("Error: Invalid business ID.");
@@ -62,9 +69,9 @@ if ($checkBusiness->rowCount() === 0) {
 $stmt = $conn->prepare("INSERT INTO services (owner_id, sname, scategory, sdescription, sprice, status, created_at) 
                         VALUES (?, ?, ?, ?, ?, ?, NOW())");
 
-if ($stmt->execute([$owner_id, $sname, $scategory, $sdescription, $sprice, $status])) {
-    echo "Listing added successfully!";
+if ($stmt->execute([$business_id, $sname, $scategory, $sdescription, $sprice, $status])) {
+    echo json_encode(["status" => "success", "message" => "Listing added successfully!"]);
 } else {
-    die("Error: Unable to add listing.");
+    echo json_encode(["status" => "error", "message" => "Failed to add listing. Please try again."]);
 }
 ?>
