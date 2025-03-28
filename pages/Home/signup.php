@@ -66,7 +66,6 @@ if(isset($_SESSION['success'])){
         </div>
     </div>
 
-    <script src="/ServiceDiscovery/Assets/js/signup.js"></script>
-    <script src="/ServiceDiscovery/Assets/js/login.js"></script>
+    <script src="/ServiceDiscovery/Assets/js/Alert.js"></script>
 </body>
 </html>
