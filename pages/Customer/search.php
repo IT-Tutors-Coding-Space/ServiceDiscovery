@@ -1,18 +1,9 @@
 <?php
-    require_once "../../php/session_handler.php";
+require_once "../../php/session_handler.php";
 
-    if (!isCustomer()) {
-        header("Location: /ServiceDiscovery/pages/Home/login.php");
-        exit();
-    }
-
-        // Fetch customer details from the session or database
-        $user_id = $_SESSION['id'];
-        require_once "../../php/conn.php";
-    
-        $stmt = $conn->prepare("SELECT username, email, created_at FROM users WHERE id = ?");
-        $stmt->execute([$user_id]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+if (!isCustomer()) {
+    exit("<p>You must be logged in as a customer.</p>");
+}
 ?>
 
 <div class="search-services">
@@ -25,7 +16,7 @@
 <script>
 function searchServices() {
     const query = document.getElementById("search-box").value;
-    fetch(`/ServiceDiscovery/php/search_handler.php?q=${query}`)
+    fetch(`/ServiceDiscovery/php/search.php?q=${query}`)
         .then(response => response.json())
         .then(data => {
             let resultsDiv = document.getElementById("search-results");
