@@ -47,6 +47,7 @@
             <li><a href="#" data-page="customer_dashboard"><i class="fas fa-home"></i> <span class="text">Dashboard</span></a></li>
             <li><a href="#" data-page="profile"><i class="fas fa-user"></i> <span class="text">Profile</span></a></li>
             <li><a href="#" data-page="search_services"><i class="fas fa-search"></i> <span class="text">Search Services</span></a></li>
+            <li><a href="#" data-page="add_request"><i class="fas fa-plus"></i> <span class="text">Add Request</span></a></li>
         </ul>
     </aside>
 
