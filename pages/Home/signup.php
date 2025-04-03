@@ -64,8 +64,8 @@ if(isset($_SESSION['success'])){
                 <p class="login-text">Already have an account? <a href="/ServiceDiscovery/pages/Home/login.php">Log in</a></p>
             </div>
         </div>
-    </div>
+    </div> 
 
-    <script src="/ServiceDiscovery/Assets/js/Alert.js"></script>
+    <script src="/ServiceDiscovery/Assets/js/Alerts.js"></script>
 </body>
 </html>
