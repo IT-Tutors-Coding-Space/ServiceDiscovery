@@ -9,17 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //for login
-document.addEventListener("DOMContentLoaded", function() {
-    // Select all the popup messages
-    const messages = document.querySelectorAll('.popup-message');
+function showPopupMessage(message, type) {
+    const popup = document.createElement('div');
+    popup.className = `popup-message ${type}-message show`;
+    popup.innerText = message;
+    document.body.appendChild(popup);
+    setTimeout(() => popup.remove(), 3000);
+}
 
-    messages.forEach(function(message) {
-        // Show the message
-        message.classList.add('show');
-
-        // Hide the message after 3 seconds
-        setTimeout(function() {
-            message.classList.remove('show');
-        }, 3000); // Adjust the time (in milliseconds) as needed
-    });
-});
