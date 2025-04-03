@@ -47,6 +47,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['id'] = (int) $user['id'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['role'] = $role_name;
+            $_SESSION['logged_in'] = true; // Set logged-in status
+
+                    // If user is a Business Owner, fetch business ID
+        if ($role_name === "Business Owner") {
+            $business_stmt = $conn->prepare("SELECT id FROM businesses WHERE owner_id = ?");
+            $business_stmt->execute([$user['id']]);
+            $business_id = $business_stmt->fetchColumn();
+
+            if ($business_id) {
+                $_SESSION['business_id'] = (int) $business_id; // Store in session
+            } else {
+                $_SESSION['business_id'] = null; // Ensure it's set even if no business exists
+             }
+        }
 
 
             // Redirect based on role
