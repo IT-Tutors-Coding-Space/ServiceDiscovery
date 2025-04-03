@@ -1,174 +1,100 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+/* Global Styling */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f4f4f9;
+    --card-bg: #ffffff;
+    --text-color: #333;
+    --border-radius: 10px;
+    --shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 body {
-    display: flex;
-    background: #f4f4f4;
-    color: #333;
-}
-
-/* Sidebar */
-.sidebar {
-    width: 250px;
-    background: #1e1e2d;
-    color: white;
-    height: 100vh;
-    padding: 20px;
-    position: fixed;
-}
-
-.sidebar h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.sidebar ul {
-    list-style: none;
+    font-family: "Poppins", sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
     padding: 0;
-}
-
-.sidebar ul li {
-    padding: 15px 0;
-}
-
-.sidebar ul li a {
-    text-decoration: none;
-    color: white;
-    display: block;
-    padding: 10px 15px;
-    border-radius: 8px;
-    transition: background 0.3s ease-in-out;
-}
-
-.sidebar ul li a:hover,
-.sidebar ul li.active a {
-    background: #2a2a3c;
-}
-
-/* Main Content */
-.main-content {
-    margin-left: 250px;
-    padding: 20px;
-    width: calc(100% - 250px);
-}
-
-/* Profile Section */
-.profile-container {
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
 }
 
+h2 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Profile Card */
 .profile-card {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background: var(--card-bg);
+    padding: 30px;
+    width: 90%; /* Responsive width */
+    max-width: 350px; /* Limits width on larger screens */
     text-align: center;
-    width: 400px;
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    transition: transform 0.3s ease-in-out;
 }
 
-.profile-card .profile-pic img {
+.profile-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Profile Picture */
+.profile-pic img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #1e1e2d;
+    margin-bottom: 15px;
 }
 
+/* Profile Details */
 .profile-card h3 {
-    margin-top: 15px;
     font-size: 22px;
+    color: var(--primary-color);
+    margin-bottom: 5px;
 }
 
 .profile-card p {
-    font-size: 16px;
-    color: #666;
-    margin: 8px 0;
+    font-size: 14px;
+    color: var(--secondary-color);
+    margin: 5px 0;
 }
 
-/* Buttons */
+/* Profile Actions */
 .profile-actions {
-    margin-top: 20px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
 }
 
-.profile-actions button {
+button {
     padding: 10px 15px;
     border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 14px;
-    margin: 5px;
-}
-
-#edit-profile-btn {
-    background: #1e88e5;
+    border-radius: var(--border-radius);
+    background: var(--primary-color);
     color: white;
-}
-
-#edit-profile-btn:hover {
-    background: #1669bb;
-}
-
-#search-services {
-    background: #ff7043;
-    color: white;
-}
-
-#search-services:hover {
-    background: #e55a2a;
-}
-
-/* Responsive */
-@media screen and (max-width: 768px) {
-    .sidebar {
-        width: 200px;
-    }
-
-    .main-content {
-        margin-left: 200px;
-        width: calc(100% - 200px);
-    }
-
-    .profile-card {
-        width: 90%;
-    }
-}
-.sidebar {
-    width: 250px;
-    height: 100vh;
-    background: #2c3e50;
-    color: white;
-    position: fixed;
-    left: 0;
-    top: 0;
-    padding: 20px;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    padding: 15px;
-}
-
-.sidebar ul li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-}
-
-.sidebar ul li.active a {
     font-weight: bold;
-    background: #34495e;
-    padding: 10px;
-    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 400px) {
+    .profile-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }

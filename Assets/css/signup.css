@@ -15,7 +15,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 70%;
+    width: 90%;
     max-width: 400px;
     text-align: center;
 }
@@ -33,7 +33,7 @@ h1 {
 }
 
 label {
-    display: flex;
+    display: block;
     font-weight: bold;
     margin-bottom: 5px;
     color: #555;
@@ -45,6 +45,7 @@ input, select {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    box-sizing: border-box;
 }
 
 button {
@@ -81,7 +82,8 @@ a:hover {
 }
   /* Left Side - Background Image */
   .left-side {
-    flex: 1;
+    width: 100%;
+    min-height: 200px;
     background: url('/ServiceDiscovery/Assets/images/hero-bg.png') no-repeat center center;
     background-size: cover;
     display: flex; 
@@ -95,16 +97,19 @@ a:hover {
   }
     /* Right Side - Login Form */
 .right-side {
-    flex: 1;
+    width: 100%;
+    padding: 20px;
     background: #f9f9f9;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
     
 }
 .container{
     display: flex;
-    height: 100vh;
+    flex-direction: column;
+    height: auto;
 }
 .error-message {
     color: red;
@@ -149,3 +154,21 @@ a:hover {
     display: block;
     opacity: 1;
   }
+
+  /* Media Query for Larger Screens (e.g., tablets and desktops) */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row; /* Switch back to row layout */
+        height: 100vh; /* Restore full viewport height */
+    }
+
+    .left-side {
+        flex: 1;
+        width: auto;
+    }
+
+    .right-side {
+        flex: 1;
+        width: auto;
+    }
+}
