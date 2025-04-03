@@ -1,21 +1,31 @@
 <?php
 require_once "../../php/session_handler.php";
+require_once "../../php/conn.php"; // Include the connection file
 
+// Ensure that the user is a business owner
 if (!isBusinessOwner()) {
     header("Location: /ServiceDiscovery/pages/Home/login.php");
     exit();
 }
+
+// Fetch the business owner ID from the session
+$business_owner_id = $_SESSION['user_id']; // Assuming this is stored in the session
+
+// Query to get services data for the logged-in business owner
+$sql = "SELECT sname, status, created_at FROM services WHERE owner_id = :business_owner_id";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':business_owner_id', $business_owner_id, PDO::PARAM_INT);
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Dashboard | ServiceDiscovery</title>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css"> -->
     <link rel="stylesheet" href="/ServiceDiscovery/Assets/css/business.css">
-    <!-- <link rel="icon" type="image/png" href="/ServiceDiscovery/Assets/images/logo-icon.png"> -->
 </head>
 <body>
     <!-- Dashboard Header -->
@@ -33,9 +43,6 @@ if (!isBusinessOwner()) {
             <section class="business-listings">
                 <div class="section-header">
                     <h2>Your Services</h2>
-                    <button class="add-service-btn" onclick="">
-                        <i class="fas fa-plus"></i> Add Service
-                    </button>
                 </div>
                 
                 <div class="table-container">
@@ -44,15 +51,28 @@ if (!isBusinessOwner()) {
                             <tr>
                                 <th>Service</th>
                                 <th>Status</th>
-                                <th>Last Updated</th>
+                                <th>Created At</th>
                             </tr>
                         </thead>
                         <tbody id="businessList">
-                            <tr id="empty-state">
-                                <td colspan="4">
-                                    <p>You haven't created any services yet</p>
-                                </td>
-                            </tr>
+                            <?php
+                            // Check if any rows are returned
+                            if ($result) {
+                                // Loop through the result set and generate table rows
+                                foreach ($result as $row) {
+                                    echo "<tr>";
+                                    echo "<td>" . htmlspecialchars($row['sname']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row['status']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
+                                    echo "</tr>";
+                                }
+                            } else {
+                                // If no services, show empty state message
+                                echo "<tr id='empty-state'>
+                                        <td colspan='3'>You haven't added any services yet.</td>
+                                      </tr>";
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -60,27 +80,9 @@ if (!isBusinessOwner()) {
         </div>
 
         <!-- Right Column -->
-        <div class="right-column">
-            <!-- Calendar Section -->
-            <section class="calendar-section">
-                <div class="section-header">
-                    <h2>Set Reminders</h2>
-                    <div class="view-options">
-                        <button class="view-btn active" data-view="day">Day</button>
-                        <button class="view-btn" data-view="week">Week</button>
-                        <button class="view-btn" data-view="month">Month</button>
-                    </div>
-                </div>
-                <div id="calendar"></div>
-            </section>
-        </div>
+        <div class="right-column"></div>
     </div>
 
-    <!-- JavaScript Libraries -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
-    
-    <!-- Main JS -->
     <script src="/ServiceDiscovery/Assets/js/business.js"></script>
 </body>
 </html>
