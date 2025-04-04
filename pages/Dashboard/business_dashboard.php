@@ -2,7 +2,7 @@
 require_once "../../php/session_handler.php";
 require_once "../../php/conn.php"; // Include the connection file
 
-// Ensure that the user is a business owner
+// Ensure that the user is logged in as a business owner
 if (!isBusinessOwner()) {
     header("Location: /ServiceDiscovery/pages/Home/login.php");
     exit();
