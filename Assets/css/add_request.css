@@ -1,0 +1,92 @@
+/* Global Styles */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f4f4f9;
+    --card-bg: #ffffff;
+    --text-color: #333;
+    --border-radius: 8px;
+    --shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Request Form Container */
+.request-form {
+    background: var(--card-bg);
+    padding: 30px;
+    width: 400px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.request-form:hover {
+    transform: translateY(-5px);
+}
+
+/* Form Heading */
+.request-form h2 {
+    font-size: 22px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Input Fields */
+.request-form input,
+.request-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    transition: 0.3s ease-in-out;
+}
+
+.request-form textarea {
+    height: 100px;
+    resize: none;
+}
+
+.request-form input:focus,
+.request-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Submit Button */
+.request-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: var(--border-radius);
+    background: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.request-form button:hover {
+    background: darken(var(--primary-color), 10%);
+}
+
+/* Request Message */
+#request-message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--secondary-color);
+}

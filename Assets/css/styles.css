@@ -12,9 +12,9 @@
     --primary-color-dark: #45a049;
     --secondary-color: #f44336;
     --text-color: #333;
-    --bg-color: #f4f4f9;
+    --bg-color: #fbfbfd;
     --header-bg: #fff;
-    --footer-bg: #333;
+    --footer-bg: #fdfbfb;
     --footer-text: #fff;
     --max-width: 1200px;
     --transition-speed: 0.3s;
@@ -37,50 +37,13 @@
     padding: 0 15px;
   }
   
-  /* ==========================================================================
-     Header & Navigation
-     ========================================================================== */
-  header {
-    background-color: var(--header-bg);
-    border-bottom: 1px solid #dddada;
-    padding: 20px 0;
-  }
-  header h1 {
-    float: left;
-    margin: 0;
-    font-size: 1.8em;
-  }
-  header nav ul {
-    list-style: none;
-    float: right;
-    margin: 0;
-    padding: 0;
-  }
-  header nav ul li {
-    display: inline-block;
-    margin-left: 20px;
-  }
-  header nav ul li a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: bold;
-    transition: color var(--transition-speed);
-  }
-  header nav ul li a:hover {
-    color: var(--primary-color);
-  }
-  header::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
   
   /* ==========================================================================
      Hero Section (Home Page)
      ========================================================================== */
   .hero {
-    background: url('/assets/images/hero-bg.jpg') no-repeat center center/cover;
-    color: #fff;
+    /* background: url('/assets/images/hero-bg.png') no-repeat center center/cover; */
+    color: #0a0a0a;
     padding: 100px 0;
     text-align: center;
   }
@@ -105,205 +68,6 @@
   .cta-buttons .cta-btn:hover {
     background-color: var(--primary-color-dark);
   }
-  
-  /* ==========================================================================
-     How It Works Section (Home Page)
-     ========================================================================== */
-  .how-it-works {
-    padding: 60px 0;
-    background-color: #fff;
-    text-align: center;
-  }
-  .how-it-works h2 {
-    margin-bottom: 40px;
-  }
-  .steps {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  .step {
-    flex: 0 0 30%;
-    background-color: #f9f9f9;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-  }
-  .step h3 {
-    margin-top: 0;
-  }
-  
-  /* ==========================================================================
-     Testimonials Section (Home Page)
-     ========================================================================== */
-  .testimonials {
-    padding: 60px 0;
-    background-color: var(--bg-color);
-    text-align: center;
-  }
-  .testimonials h2 {
-    margin-bottom: 40px;
-  }
-  .testimonial-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  .testimonial-cards .card {
-    flex: 0 0 45%;
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  /* ==========================================================================
-     Login Sections (Client & Provider)
-     ========================================================================== */
-  .login-section {
-    padding: 60px 0;
-    background-color: #fff;
-    text-align: center;
-  }
-  .login-section h2 {
-    margin-bottom: 20px;
-  }
-  .login-form {
-    max-width: 400px;
-    margin: 0 auto;
-    text-align: left;
-  }
-  .login-form label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-  }
-  .login-form input[type="email"],
-  .login-form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  .login-form button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    margin-top: 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background var(--transition-speed);
-  }
-  .login-form button:hover {
-    background-color: var(--primary-color-dark);
-  }
-  .login-section p {
-    margin-top: 15px;
-  }
-  
-  /* ==========================================================================
-     About Page Section
-     ========================================================================== */
-  .about-section {
-    padding: 60px 0;
-    background-color: #fff;
-  }
-  .about-section h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .about-section p {
-    margin-bottom: 15px;
-    text-align: justify;
-  }
-  
-  /* ==========================================================================
-     Contact Page Section
-     ========================================================================== */
-  .contact-section {
-    padding: 60px 0;
-    background-color: #fff;
-    text-align: center;
-  }
-  .contact-section h2 {
-    margin-bottom: 20px;
-  }
-  .contact-form {
-    max-width: 500px;
-    margin: 0 auto;
-    text-align: left;
-  }
-  .contact-form label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-  }
-  .contact-form input[type="text"],
-  .contact-form input[type="email"],
-  .contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  .contact-form textarea {
-    resize: vertical;
-  }
-  .contact-form button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    margin-top: 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background var(--transition-speed);
-  }
-  .contact-form button:hover {
-    background-color: var(--primary-color-dark);
-  }
-  
-  /* ==========================================================================
-     Footer
-     ========================================================================== */
-  footer {
-    background-color: var(--footer-bg);
-    color: var(--footer-text);
-    padding: 20px 0;
-    text-align: center;
-  }
-  footer p {
-    margin: 0;
-    font-size: 14px;
-  }
-  footer nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0 0;
-  }
-  footer nav ul li {
-    display: inline;
-    margin: 0 10px;
-  }
-  footer nav ul li a {
-    color: var(--footer-text);
-    text-decoration: none;
-    transition: color var(--transition-speed);
-  }
-  footer nav ul li a:hover {
-    color: var(--primary-color);
-  }
-  
   /* ==========================================================================
      Responsive Styles
      ========================================================================== */
@@ -319,18 +83,5 @@
       margin: 10px 0;
     }
     
-    /* Adjust steps layout */
-    .steps {
-      flex-direction: column;
-      align-items: center;
-    }
-    .step {
-      flex: 0 0 80%;
-    }
-    
-    /* Adjust testimonial cards */
-    .testimonial-cards .card {
-      flex: 0 0 90%;
-    }
   }
   
