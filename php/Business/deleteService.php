@@ -1,28 +1,20 @@
 <?php
-require_once "/ServiceDiscovery/php/conn.php";
-require_once "/ServiceDiscovery/php/session_handler.php";
+require_once "../../php/db_connect.php";
 
-if (!isBusinessOwner()) {
-    echo json_encode(["success" => false, "message" => "Unauthorized"]);
-    exit();
-}
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $listing_id = intval($_POST["id"]);
+    $owner_id = $_SESSION["user_id"];
 
-$data = json_decode(file_get_contents("php://input"), true);
-if (!isset($data['id'])) {
-    echo json_encode(["success" => false, "message" => "Missing service ID"]);
-    exit();
-}
+    $stmt = $conn->prepare("DELETE FROM services WHERE id = ? AND owner_id = ?");
+    $stmt->bind_param("ii", $listing_id, $owner_id);
 
-$owner_id = $_SESSION['id'];
-$service_id = intval($data['id']);
+    if ($stmt->execute()) {
+        echo json_encode(["success" => true, "message" => "Listing deleted."]);
+    } else {
+        echo json_encode(["success" => false, "message" => "Deletion failed."]);
+    }
 
-$sql = "DELETE FROM Services WHERE id = ? AND owner_id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("ii", $service_id, $owner_id);
-
-if ($stmt->execute()) {
-    echo json_encode(["success" => true, "message" => "Service deleted successfully"]);
-} else {
-    echo json_encode(["success" => false, "message" => "Error deleting service"]);
+    $stmt->close();
+    $conn->close();
 }
 ?>

@@ -73,6 +73,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $stmt = $conn->prepare("INSERT INTO businesses (owner_id) VALUES (?)");
                         $stmt->bindParam(1, $user_id, PDO::PARAM_INT);
                         $stmt->execute();
+
+                            // ✅ Get the business ID and store it in the session
+                        $business_id = $conn->lastInsertId(); // Retrieve the inserted business ID
+                        $_SESSION['business_id'] = $business_id; // Store it in the session
                     }
 
                     $_SESSION['success'] = "Registration successful! Please log in.";

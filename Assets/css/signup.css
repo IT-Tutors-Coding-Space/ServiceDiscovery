@@ -10,12 +10,13 @@ body {
     height: 100vh;
 }
 
+/* Signup Container */
 .signup-container {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 70%;
+    width: 90%;
     max-width: 400px;
     text-align: center;
 }
@@ -41,15 +42,16 @@ label {
 
 input, select {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
 }
 
+/* Buttons */
 button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: #007bff;
     color: white;
     border: none;
@@ -75,16 +77,24 @@ a {
 a:hover {
     text-decoration: underline;
 }
-.submitbtn{
+
+.submitbtn {
     margin-top: 10px;
-    
 }
-  /* Left Side - Background Image */
-  .left-side {
+
+/* Split Screen Layout */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Left Side - Background Image */
+.left-side {
     flex: 1;
     background: url('/ServiceDiscovery/Assets/images/hero-bg.png') no-repeat center center;
     background-size: cover;
-    display: flex; 
+    background-position: center;
+    display: flex;
     align-items: center;
     justify-content: center;
     color: white;
@@ -92,41 +102,36 @@ a:hover {
     font-weight: bold;
     text-transform: uppercase;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-  }
-    /* Right Side - Login Form */
+    min-height: 50vh; /* Ensure full height */
+}
+
+/* Right Side - Login Form */
 .right-side {
     flex: 1;
     background: #f9f9f9;
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
-.container{
-    display: flex;
-    height: 100vh;
-}
-.error-message {
-    color: red;
-    border: 1px solid red;
+
+/* Error & Success Messages */
+.error-message, .success-message {
     padding: 10px;
     margin-bottom: 10px;
-}
-.success-message{
-    color: green;
-    border: 1px solid green;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-.error-message {
-    background-color: #ffcccc;
-    color: #cc0000;
-    padding: 10px;
     border-radius: 5px;
     text-align: center;
-    margin-bottom: 10px;
     font-weight: bold;
-    animation: fadeOut 5s forwards; /* Apply fade-out animation */
+    animation: fadeOut 5s forwards; /* Fade-out animation */
+}
+
+.error-message {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+.success-message {
+    background-color: #4CAF50; /* Green */
+    color: white;
 }
 
 @keyframes fadeOut {
@@ -134,18 +139,32 @@ a:hover {
     80% { opacity: 1; }
     100% { opacity: 0; display: none; }
 }
-/* Error message style */
-.error-message {
-    background-color: #f44336; /* Red */
-  }
-  
-  /* Success message style */
-  .success-message {
-    background-color: #4CAF50; /* Green */
-  }
-  
-  /* Show message when active */
-  .show {
-    display: block;
-    opacity: 1;
-  }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stacks sections vertically */
+        height: auto;
+    }
+
+    .left-side {
+        height: 250px; /* Adjust image section height */
+        font-size: 1.5rem;
+    }
+
+    .signup-container {
+        width: 95%;
+        max-width: 350px;
+        padding: 15px;
+    }
+
+    input, select {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
