@@ -19,7 +19,7 @@
 <body>
 <header class="dashboard-header">
         <div class="header-left">
-            <h1>Service Requests</h1>
+            <h1>Messages</h1>
         </div>
     </header>
     <div class="main-content">
