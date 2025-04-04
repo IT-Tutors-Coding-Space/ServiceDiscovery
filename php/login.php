@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Validate input
     if (empty($email) || empty($password) || empty($role_name)) {
         $_SESSION['error'] = "All fields are required.";
-        header("Location: /ServiceDiscovery/pages/Home/login.php");
+        // header("Location: /ServiceDiscovery/pages/Home/login.php");
         
         exit();
     }
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if(!$role_id) {
             $_SESSION['error'] = "Invalid role selected.";
-            header("Location: /ServiceDiscovery/pages/Home/login.php");
+            // header("Location: /ServiceDiscovery/pages/Home/login.php");
             exit();
         }
 
@@ -47,11 +47,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['id'] = (int) $user['id'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['role'] = $role_name;
+            $_SESSION['logged_in'] = true; // Set logged-in status
+
+                    // If user is a Business Owner, fetch business ID
+        if ($role_name === "Business Owner") {
+            $business_stmt = $conn->prepare("SELECT id FROM businesses WHERE owner_id = ?");
+            $business_stmt->execute([$user['id']]);
+            $business_id = $business_stmt->fetchColumn();
+
+            if ($business_id) {
+                $_SESSION['business_id'] = (int) $business_id; // Store in session
+            } else {
+                $_SESSION['business_id'] = null; // Ensure it's set even if no business exists
+             }
+        }
 
 
             // Redirect based on role
             if ($role_name === "Customer") {
-                header("Location: /ServiceDiscovery/pages/Customer/profile.php");
+                header("Location: /ServiceDiscovery/pages/Customer/index.php");
                 exit();
             } elseif ($role_name === "Business Owner") {
                 header("Location:  /ServiceDiscovery/pages/Dashboard/index.php");

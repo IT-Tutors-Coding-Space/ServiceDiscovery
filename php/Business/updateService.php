@@ -1,33 +1,36 @@
 <?php
-require_once "/ServiceDiscovery/php/conn.php";
-require_once "/ServiceDiscovery/php/session_handler.php";
+require_once "../../php/db_connect.php"; // Ensure database connection
 
-if (!isBusinessOwner()) {
-    echo json_encode(["success" => false, "message" => "Unauthorized"]);
-    exit();
-}
+header('Content-Type: application/json');
 
-$data = json_decode(file_get_contents("php://input"), true);
 
-if (!isset($data['id'], $data['sname'], $data['scategory'], $data['sdescription'], $data['sprice'])) {
-    echo json_encode(["success" => false, "message" => "Missing required fields"]);
-    exit();
-}
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $title = trim($_POST["title"]);
+    $category = trim($_POST["category"]);
+    $price = floatval($_POST["price"]);
+    $status = trim($_POST["status"]);
+    $description = trim($_POST["description"]);
+    $owner_id = $_SESSION["user_id"]; // Assuming business owners are logged in
 
-$owner_id = $_SESSION['id'];
-$service_id = intval($data['id']);
-$sname = trim($data['sname']);
-$scategory = trim($data['scategory']);
-$sdescription = trim($data['sdescription']);
-$sprice = floatval($data['sprice']);
+    if (empty($title) || empty($category) || empty($price) || empty($status) || empty($description)) {
+        echo json_encode(["success" => false, "message" => "All fields are required."]);
+        exit;
+    }
 
-$sql = "UPDATE Services SET sname = ?, scategory = ?, sdescription = ?, sprice = ? WHERE id = ? AND owner_id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("sssdi", $sname, $scategory, $sdescription, $sprice, $service_id, $owner_id);
+    $stmt = $conn->prepare("INSERT INTO services (title, category, price, status, description, owner_id) VALUES (?, ?, ?, ?, ?, ?)");
+    if (!$stmt) {
+        echo json_encode(["success" => false, "message" => "Database error: " . $conn->error]);
+        exit;
+    }
+    $stmt->bind_param("ssdssi", $title, $category, $price, $status, $description, $owner_id);
 
-if ($stmt->execute()) {
-    echo json_encode(["success" => true, "message" => "Service updated successfully"]);
-} else {
-    echo json_encode(["success" => false, "message" => "Error updating service"]);
+    if ($stmt->execute()) {
+        echo json_encode(["success" => true, "message" => "Listing saved successfully."]);
+    } else {
+        echo json_encode(["success" => false, "message" => "Database error: " . $conn->error]);
+    }
+
+    $stmt->close();
+    $conn->close();
 }
 ?>
