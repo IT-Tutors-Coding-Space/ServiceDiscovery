@@ -63,14 +63,14 @@ $user1 = $stmt1->fetch(PDO::FETCH_ASSOC);
 
         // Show input fields and allow editing
         editBtn.addEventListener("click", function () {
-            phoneText.classList.add("hidden");
-            phoneInput.classList.remove("hidden");
+            phoneText.classList.add(style.display="none");
+            phoneInput.classList.remove(style.display="none");
 
-            addressText.classList.add("hidden");
-            addressInput.classList.remove("hidden");
+            addressText.classList.add(style.display="none");
+            addressInput.classList.remove(style.display="none");
 
-            editBtn.classList.add("hidden");
-            saveBtn.classList.remove("hidden");
+            editBtn.classList.add(style.display="none");
+            saveBtn.classList.remove(style.display="none");
         });
     });
 
