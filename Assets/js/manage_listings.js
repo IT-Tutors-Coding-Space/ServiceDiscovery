@@ -116,3 +116,57 @@ document.getElementById("listing-form").addEventListener("submit", function(even
     })
     .catch(error => console.error("Error:", error));
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("listing-form");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        let formData = {
+            sname: document.getElementById("listing-title").value.trim(),
+            scategory: document.getElementById("listing-category").value.trim(),
+            sdescription: document.getElementById("listing-description").value.trim(),
+            sprice: parseFloat(document.getElementById("listing-price").value),
+        };
+
+        let listingId = form.getAttribute("data-id"); // If updating, an ID is present
+        if (listingId) {
+            formData.id = listingId;
+        }
+
+        fetch("/ServiceDiscovery/php/Business/process_listings.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        })
+        .then(response => response.json())
+        .then(data => {
+            showPopupMessage(data.message, data.success ? "success" : "error");
+
+            if (data.success) {
+                setTimeout(() => {
+                    location.reload(); // Reload to update listings
+                }, 1500);
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            showPopupMessage("An unexpected error occurred. Please try again.", "error");
+        });
+    });
+});
+
+// Function to show a popup message
+function showPopupMessage(message, type) {
+    let popup = document.createElement("div");
+    popup.className = "popup-message " + type;
+    popup.textContent = message;
+
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+        popup.remove();
+    }, 3000);
+}
