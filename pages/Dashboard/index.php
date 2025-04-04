@@ -15,7 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discovery</title>
     <link rel="stylesheet" href="/ServiceDiscovery/Assets/css/business.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+
     <link rel="icon" type="image/png" href="/ServiceDiscovery/Assets/images/hero-bg.png">
 </head>
 <body>
@@ -32,8 +33,8 @@
                 
             </button>
             <div class="profile-dropdown" id="profile-dropdown">
-                <a href="#" data-page="profile" onclick="navigateTo('profile')" style="color:black">👤 Profile</a>
-                <a href="#" onclick="logout()" style="color:red">↻ Logout</a>
+                <a href="#" data-page="profile" style="color:blue">👤 Profile</a>
+                <a href="#" onclick="event.preventDefault(); logout();" style="color:red">↻ Logout</a>
             </div>
         </div>
     </div>
@@ -42,9 +43,9 @@
     <aside class="sidebar" id="sidebar">
         <ul>
             <li><a href="#" data-page="business_dashboard"><i class="fas fa-home"></i> <span class="text">Dashboard</span></a></li>
-            <li><a href="#" data-page="settings"><i class="fas fa-cog"></i> <span class="text">Settings</span></a></li>
+            <!-- <li><a href="#" data-page="settings"><i class="fas fa-cog"></i> <span class="text">Settings</span></a></li> -->
             <li><a href="#" data-page="manage_listings"><i class="fas fa-list"></i> <span class="text">Manage Listings</span></a></li>
-            <li><a href="#" data-page="messages"><i class="fas fa-envelope"></i> <span class="text">Messages</span></a></li>            
+            <li><a href="#" data-page="messages"><i class="fas fa-envelope"></i> <span class="text">Browse Requests</span></a></li>            
         </ul>
 
     </aside>
@@ -57,5 +58,7 @@
     </section>
 
     <script src="/ServiceDiscovery/Assets/js/business.js"></script>
+    <script src="/ServiceDiscovery/Assets/js/manage_listings.js"></script>
+
 </body>
 </html>

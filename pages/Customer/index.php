@@ -22,6 +22,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Dashboard</title>
     <link rel="stylesheet" href="/ServiceDiscovery/Assets/css/business.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/ServiceDiscovery/Assets/css/Cprofile.css">
+
     <link rel="icon" type="image/png" href="/ServiceDiscovery/Assets/images/hero-bg.png">
 </head>
 <body>
@@ -38,23 +41,28 @@
                 <img src="/ServiceDiscovery/Assets/images/profile1.jpg" alt="User Avatar" id="user-avatar">
                 <i class="fas fa-chevron-down"></i>
             </button>
+            <div class="profile-dropdown" id="profile-dropdown">
+                <a href="#" onclick="navigateTo('profile')" style="color:black">👤 Profile</a>
+                <a href="#" onclick="logout()" style="color:red">↻ Logout</a>
+            </div>
         </div>
     </div>
 
     <!-- Sidebar Navigation -->
     <aside class="sidebar" id="sidebar">
         <ul>
-            <li><a href="#" data-page="customer_dashboard"><i class="fas fa-home"></i> <span class="text">Dashboard</span></a></li>
+            <li><a href="#" data-page="dashboard"><i class="fas fa-home"></i> <span class="text">Dashboard</span></a></li>
             <li><a href="#" data-page="profile"><i class="fas fa-user"></i> <span class="text">Profile</span></a></li>
-            <li><a href="#" data-page="search_services"><i class="fas fa-search"></i> <span class="text">Search Services</span></a></li>
+            <li><a href="#" data-page="search"><i class="fas fa-search"></i> <span class="text">Search Services</span></a></li>
+            <li><a href="#" data-page="add_request"><i class="fas fa-plus"></i> <span class="text">Add Request</span></a></li>
         </ul>
-    </aside>
+    </aside> 
 
     <!-- Main Content -->
     <section class="main-content" id="content">
         <!-- SPA Content Loads Here -->
     </section>
 
-    <script src="/ServiceDiscovery/Assets/js/business.js"></script>
+    <script src="/ServiceDiscovery/Assets/js/index.js"></script>
 </body>
 </html>

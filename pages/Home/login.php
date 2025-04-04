@@ -63,9 +63,13 @@ if(isset($_SESSION['success'])){
         </form>
 
         <p class="signup-text">Don't have an account? <a href="/ServiceDiscovery/pages/Home/signup.php">Sign Up</a></p>
+        <p class="home">
+         <a href="/ServiceDiscovery/pages/Home/index.html">← Back to Home</a>
+        </p>
+
       </div>
     </div>
   </div>
-  <script src="/ServiceDiscovery/Assets/js/login.js"></script>
+  <script src="/ServiceDiscovery/Assets/js/Alerts.js"></script>
 </body>
 </html>
