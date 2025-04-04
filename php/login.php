@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Validate input
     if (empty($email) || empty($password) || empty($role_name)) {
         $_SESSION['error'] = "All fields are required.";
-        header("Location: /ServiceDiscovery/pages/Home/login.php");
+        // header("Location: /ServiceDiscovery/pages/Home/login.php");
         
         exit();
     }
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if(!$role_id) {
             $_SESSION['error'] = "Invalid role selected.";
-            header("Location: /ServiceDiscovery/pages/Home/login.php");
+            // header("Location: /ServiceDiscovery/pages/Home/login.php");
             exit();
         }
 
