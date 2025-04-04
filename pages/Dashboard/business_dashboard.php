@@ -9,7 +9,7 @@ if (!isBusinessOwner()) {
 }
 
 // Fetch the business owner ID from the session
-$business_owner_id = $_SESSION['user_id']; // Assuming this is stored in the session
+$business_owner_id = $_SESSION['id']; // Assuming this is stored in the session
 
 // Query to get services data for the logged-in business owner
 $sql = "SELECT sname, status, created_at FROM services WHERE owner_id = :business_owner_id";
