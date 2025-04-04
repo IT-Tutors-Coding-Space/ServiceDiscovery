@@ -4,6 +4,11 @@ require_once "../../php/session_handler.php";
 if (!isCustomer()) {
     exit("<p>You must be logged in as a customer.</p>");
 }
+
+//fetch user id
+$user_id = $_SESSION['id'];
+require_once "../../php/conn.php";
+
 ?>
 <link rel="stylesheet" href="/ServiceDiscovery/Assets/css/search.css">
 <link rel="stylesheet" href="/ServiceDiscovery/Assets/css/Cprofile.css">
