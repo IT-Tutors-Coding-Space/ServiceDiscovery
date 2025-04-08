@@ -20,6 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if all fields are required
     if (empty($username) || empty($email) || empty($password) || empty($confirmPassword) || empty($role_name)) {
         $_SESSION['error'] = "All fields are required.";
+    }elseif(!preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/", $password)){
+        $_SESSION['error'] = "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
     }
     // Validate email format
     elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {

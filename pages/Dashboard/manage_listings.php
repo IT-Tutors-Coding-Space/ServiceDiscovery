@@ -1,10 +1,22 @@
 <?php
-    require_once "../../php/session_handler.php";
+require_once "../../php/session_handler.php";
+require_once "../../php/conn.php"; // Include the connection file
 
-    if (!isBusinessOwner()) {
-        header("Location: /ServiceDiscovery/pages/Home/login.php");
-        exit();
-    }
+// Ensure that the user is logged in as a business owner
+if (!isBusinessOwner()) {
+    header("Location: /ServiceDiscovery/pages/Home/login.php");
+    exit();
+}
+
+// Fetch the business owner ID from the session
+$business_owner_id = $_SESSION['business_id']; // Assuming this is stored in the session
+
+// Query to get the business's services from the database
+$sql = "SELECT id, sname, scategory, sdescription, sprice, status, created_at FROM services WHERE owner_id = :business_owner_id";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':business_owner_id', $business_owner_id, PDO::PARAM_INT);
+$stmt->execute();
+$services = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -52,19 +64,29 @@
             </thead>
             
             <tbody id="listings-body">
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr id="empty-state">
-                    <td colspan="8">No listings found. <button type="submit"  onclick="openModal()">+ Add service</button></td>
-                </tr>
+                <?php if (!empty($services)): ?>
+                    <?php foreach ($services as $service): ?>
+                        <tr>
+                            <td><input type="checkbox" class="listing-select" value="<?php echo htmlspecialchars($service['id']); ?>"></td>
+                            <td><?php echo htmlspecialchars($service['sname']); ?></td>
+                            <td><?php echo htmlspecialchars($service['scategory']); ?></td>
+                            <td><?php echo htmlspecialchars($service['sdescription']); ?></td>
+                            <td><?php echo htmlspecialchars($service['sprice']); ?></td>
+                            <td><?php echo htmlspecialchars($service['status']); ?></td>
+                            <td><?php echo htmlspecialchars($service['created_at']); ?></td>
+                            <td>
+                                <!-- Add action buttons for edit, deactivate, delete, etc. -->
+                                <button>Edit</button>
+                                <button>Delete</button>
+                            </td>
+                        </tr>                                             
+                        <button type="submit" onclick="openModal()">+ Add service</button>                       
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="8">No listings found. <button type="submit" onclick="openModal()">+ Add service</button></td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>
