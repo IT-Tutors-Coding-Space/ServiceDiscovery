@@ -49,7 +49,7 @@ function requireLogin() {
 function logout() {
     session_unset();
     session_destroy();
-    header("Location:".BASE_PATH." /Home/login.php");
+    header("Location:".BASE_PATH."Home/login.php");
     exit();
 }
 if(isset($_GET['logout'])) {
