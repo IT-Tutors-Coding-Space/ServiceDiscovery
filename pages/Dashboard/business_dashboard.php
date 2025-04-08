@@ -8,8 +8,13 @@ if (!isBusinessOwner()) {
     exit();
 }
 
-// Fetch the business owner ID from the session
-$business_owner_id = $_SESSION['id']; // Assuming this is stored in the session
+// Check if the business owner ID is set in the session
+if (!isset($_SESSION['business_id'])) {
+    header("Location: /ServiceDiscovery/pages/Home/login.php");
+    exit();
+}
+
+$business_owner_id = $_SESSION['business_id']; // Use the business ID stored in the session
 
 // Query to get services data for the logged-in business owner
 $sql = "SELECT sname, status, created_at FROM services WHERE owner_id = :business_owner_id";
@@ -55,14 +60,14 @@ $requests = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php if (!empty($requests)): ?>
                             <?php foreach ($requests as $request): ?>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($request['service']); ?></td>
+                                    <td><?php echo htmlspecialchars($request['sname']); ?></td>
                                     <td><?php echo htmlspecialchars($request['status']); ?></td>
                                     <td><?php echo htmlspecialchars($request['created_at']); ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="3">No services available.</td>
+                                <td colspan="3">No services yet.</td>
                             </tr>
                         <?php endif; ?>
                     </tbody>
