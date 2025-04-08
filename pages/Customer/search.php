@@ -9,7 +9,7 @@ if (!isCustomer()) {
 $user_id = $_SESSION['id'];
 require_once "../../php/conn.php";
 
-?>
+?> 
 <link rel="stylesheet" href="/ServiceDiscovery/Assets/css/search.css">
 <link rel="stylesheet" href="/ServiceDiscovery/Assets/css/Cprofile.css">
 
@@ -50,7 +50,9 @@ function searchServices() {
                 `<div class="business-card">
                     <h3>${business.name}</h3>
                     <p>Category: <strong>${business.category}</strong></p>
-                    <a href="/ServiceDiscovery/pages/Business/profile.php?id=${business.id}" class="view-profile">
+                    <p>Description: ${business.description}</p>
+                    <p>Price: <strong>$${business.price}</strong></p>
+                    <a href="/ServiceDiscovery/pages/Dashboard/business_dashboard.php?id=${business.id}" class="view-profile">
                         View Profile →
                     </a>
                 </div>`

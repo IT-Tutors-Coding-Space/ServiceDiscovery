@@ -17,31 +17,40 @@ $stmt1 = $conn->prepare("SELECT phone, address FROM customers WHERE user_id = ?"
 $stmt1->execute([$user_id]);
 $user1 = $stmt1->fetch(PDO::FETCH_ASSOC);
 ?>
+
 <link rel="stylesheet" href="/ServiceDiscovery/Assets/css/Cprofile.css">
+
 <header>
     <h2>Profile</h2>
 </header>
 
 <section class="profile-container">
-    <div class="profile-card">
-        <div class="profile-pic">
-            <img src="/ServiceDiscovery/Assets/images/profile1.jpg" alt="Profile Picture">
+    <div class="profile-info">
+        <div class="profile-header">
+            <div class="profile-pic">
+                <img src="/ServiceDiscovery/Assets/images/profile1.jpg" alt="Profile Picture">
+            </div>
+            <h3><?php echo htmlspecialchars($user['username']); ?></h3>
         </div>
-        <h3><?php echo htmlspecialchars($user['username']); ?></h3>
-        <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
 
-        <!-- Editable Fields -->
-        <form method="POST" action="/ServiceDiscovery/php/Customer/update_profile.php">
-            <p>Contact: 
+        <div class="profile-details">
+            <div class="profile-row">
+                <strong>Email:</strong>
+                <span><?php echo htmlspecialchars($user['email']); ?></span>
+            </div>
+            <div class="profile-row">
+                <strong>Contact:</strong>
                 <span id="phone-text"><?php echo htmlspecialchars($user1['phone'] ?? 'N/A'); ?></span>
                 <input type="text" name="phone" id="phone-input" value="<?php echo htmlspecialchars($user1['phone'] ?? ''); ?>" style="display:none;">
-            </p>
-
-            <p>Location: 
+            </div>
+            <div class="profile-row">
+                <strong>Location:</strong>
                 <span id="address-text"><?php echo htmlspecialchars($user1['address'] ?? 'N/A'); ?></span>
                 <input type="text" name="address" id="address-input" value="<?php echo htmlspecialchars($user1['address'] ?? ''); ?>" style="display:none;">
-            </p>
+            </div>
+        </div>
 
+        <form method="POST" action="/ServiceDiscovery/php/Customer/update_profile.php">
             <div class="profile-actions">
                 <button type="button" id="edit-profile-btn">Edit Profile</button>
                 <button type="submit" id="save-profile-btn" style="display: none;">Save</button>
@@ -51,27 +60,30 @@ $user1 = $stmt1->fetch(PDO::FETCH_ASSOC);
 </section>
 
 <script>
-        document.addEventListener("DOMContentLoaded", function () {
-        const editBtn = document.getElementById("edit-profile-btn");
-        const saveBtn = document.getElementById("save-profile-btn");
-        
-        const phoneText = document.getElementById("phone-text");
-        const phoneInput = document.getElementById("phone-input");
+document.addEventListener("DOMContentLoaded", function () {
+    const editBtn = document.getElementById("edit-profile-btn");
+    const saveBtn = document.getElementById("save-profile-btn");
+    
+    const phoneText = document.getElementById("phone-text");
+    const phoneInput = document.getElementById("phone-input");
 
-        const addressText = document.getElementById("address-text");
-        const addressInput = document.getElementById("address-input");
+    const addressText = document.getElementById("address-text");
+    const addressInput = document.getElementById("address-input");
 
-        // Show input fields and allow editing
-        editBtn.addEventListener("click", function () {
-            phoneText.classList.add(style.display="none");
-            phoneInput.classList.remove(style.display="none");
+    // Show input fields and allow editing
+    editBtn.addEventListener("click", function () {
+        // Hide text spans
+        phoneText.style.display = "none";
+        addressText.style.display = "none";
 
-            addressText.classList.add(style.display="none");
-            addressInput.classList.remove(style.display="none");
+        // Show input fields
+        phoneInput.style.display = "inline";
+        addressInput.style.display = "inline";
 
-            editBtn.classList.add(style.display="none");
-            saveBtn.classList.remove(style.display="none");
-        });
+        // Hide Edit button, show Save button
+        editBtn.style.display = "none";
+        saveBtn.style.display = "inline-block";
     });
-
+});
 </script>
+

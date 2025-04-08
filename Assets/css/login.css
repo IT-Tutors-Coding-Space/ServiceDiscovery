@@ -104,37 +104,36 @@
 
 /* Popup styles */
 .popup-message {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 15px 25px;
-  border-radius: 8px;
-  font-size: 16px;
-  color: white;
-  z-index: 1000;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-  display: none;
-  width: 80%;
-  max-width: 300px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  font-weight: bold;
   text-align: center;
+  display: none; /* Initially hidden */
+  width: 100%;
 }
-
-/* Error message style */
+.error-message, .success-message {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  animation: fadeOut 5s forwards; /* Fade-out animation */
+}
 .error-message {
-  background-color: #f44336; /* Red */
+  background-color: #f44336;
+  color: white;
 }
 
-/* Success message style */
 .success-message {
-  background-color: #4CAF50; /* Green */
+  background-color: #4CAF50;
+  color: white;
 }
-
-/* Show message when active */
-.show {
-  display: block;
-  opacity: 1;
+/* Fade Out Keyframes */
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
 }
 
 /* Mobile Responsive Styles */

@@ -2,21 +2,26 @@
 require_once "../../php/session_handler.php";
 require_once "../../php/conn.php"; // Include the connection file
 
-// Ensure that the user is a business owner
+// Ensure that the user is logged in as a business owner
 if (!isBusinessOwner()) {
     header("Location: /ServiceDiscovery/pages/Home/login.php");
     exit();
 }
 
-// Fetch the business owner ID from the session
-$business_owner_id = $_SESSION['id']; // Assuming this is stored in the session
+// Check if the business owner ID is set in the session
+if (!isset($_SESSION['business_id'])) {
+    header("Location: /ServiceDiscovery/pages/Home/login.php");
+    exit();
+}
+
+$business_owner_id = $_SESSION['business_id']; // Use the business ID stored in the session
 
 // Query to get services data for the logged-in business owner
 $sql = "SELECT sname, status, created_at FROM services WHERE owner_id = :business_owner_id";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':business_owner_id', $business_owner_id, PDO::PARAM_INT);
 $stmt->execute();
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$requests = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +29,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Dashboard | ServiceDiscovery</title>
+    <title>Service Requests | ServiceDiscovery</title>
     <link rel="stylesheet" href="/ServiceDiscovery/Assets/css/business.css">
 </head>
 <body>
@@ -37,50 +42,38 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Left Column -->
-        <div class="left-column">
-            <!-- Business Listings -->
-            <section class="business-listings">
-                <div class="section-header">
-                    <h2>Your Services</h2>
-                </div>
-                
-                <div class="table-container">
-                    <table class="listings-table">
-                        <thead>
+        <section class="requests-list">
+            <div class="section-header">
+                <h2>Your Services</h2>
+            </div>
+            
+            <div class="table-container">
+                <table class="listings-table" border="1">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Status</th>
+                            <th>Created At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (!empty($requests)): ?>
+                            <?php foreach ($requests as $request): ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars($request['sname']); ?></td>
+                                    <td><?php echo htmlspecialchars($request['status']); ?></td>
+                                    <td><?php echo htmlspecialchars($request['created_at']); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
                             <tr>
-                                <th>Service</th>
-                                <th>Status</th>
-                                <th>Created At</th>
+                                <td colspan="3">No services yet.</td>
                             </tr>
-                        </thead>
-                        <tbody id="businessList">
-                            <?php
-                            // Check if any rows are returned
-                            if ($result) {
-                                // Loop through the result set and generate table rows
-                                foreach ($result as $row) {
-                                    echo "<tr>";
-                                    echo "<td>" . htmlspecialchars($row['sname']) . "</td>";
-                                    echo "<td>" . htmlspecialchars($row['status']) . "</td>";
-                                    echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
-                                    echo "</tr>";
-                                }
-                            } else {
-                                // If no services, show empty state message
-                                echo "<tr id='empty-state'>
-                                        <td colspan='3'>You haven't added any services yet.</td>
-                                      </tr>";
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-        </div>
-
-        <!-- Right Column -->
-        <div class="right-column"></div>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </div>
 
     <script src="/ServiceDiscovery/Assets/js/business.js"></script>

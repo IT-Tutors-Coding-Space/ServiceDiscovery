@@ -5,8 +5,12 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
             errorMessage.style.display = "none";
         }, 5000); // Hide after 5 seconds
+        setTimeout(() =>{
+            errorMessage.style.display = "block";
+        }, 5000); // Show after 5 seconds
     }
 });
+
 
 //for login
 function showPopupMessage(message, type) {

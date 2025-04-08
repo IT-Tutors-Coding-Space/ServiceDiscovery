@@ -1,12 +1,5 @@
 <?php session_start(); 
-if (isset($_SESSION['error'])) {
-    echo '<div class="popup-message error-message">' . $_SESSION['error'] . '</div>';
-    unset($_SESSION['error']); // Clear the error message
-}
-if(isset($_SESSION['success'])){
-    echo '<div class="popup-message success-message">'. $_SESSION['success'] . '</div>';
-    unset($_SESSION['success']);
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -31,15 +24,13 @@ if(isset($_SESSION['success'])){
                 <p>Fill in your details to sign up</p>
 
                 <!-- Display error message -->
-                 <?php if(!isset($_SESSION['error']) && !empty($_SESSION['error'])): ?>
-                    <div id="error-message" class="error-message">
-                        <?php echo $_SESSION['error']; ?>
-                        <?php unset($_SESSION['error']); ?>
-                    </div>
-                <?php endif; ?>
+                 <?php if(isset($_SESSION['error']) && !empty($_SESSION['error'])): ?>
+                    <p id="error-message" class="error-message"><?= htmlspecialchars($_SESSION['error'], ENT_QUOTES, 'UTF-8'); ?></p>
+                    <?php unset($_SESSION['error']); ?>              
+                <?php endif; ?> 
 
 
-                <form action="http://localhost/ServiceDiscovery/php/sign_up.php" method="POST">
+                <form action="/ServiceDiscovery/php/sign_up.php" method="POST">
                     <label for="username">User Name</label>
                     <input type="text" id="username" name="username" required>
 
@@ -53,7 +44,8 @@ if(isset($_SESSION['success'])){
                     </select>
 
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" required  pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" 
+                    title="Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.">
 
                     <label for="confirmPassword">Confirm Password</label>
                     <input type="password" id="confirmPassword" name="confirmPassword" required>

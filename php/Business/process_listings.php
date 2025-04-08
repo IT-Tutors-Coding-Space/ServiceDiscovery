@@ -33,6 +33,8 @@ if (!isset($_SESSION['business_id']) || empty($_SESSION['business_id'])) {
     if (!$business_id) {
         echo json_encode(["status" => "error", "message" => "Business not found for this owner."]);
         exit;    
+    } else{
+        
     }
     $_SESSION['business_id'] = (int) $business_id; //store in session
 }

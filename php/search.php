@@ -7,7 +7,8 @@ require_once "conn.php";
 
 // Ensure the database connection is valid
 if (!isset($conn) || !$conn instanceof PDO) {
-    die(json_encode(["status" => "error", "message" => "Database connection failed."]));
+    echo json_encode(["status" => "error", "message" => "Database connection failed."]);
+    exit;
 }
 
 // Get the search query
@@ -19,7 +20,7 @@ if (empty($query)) {
 }
 
 // Search for services that match the query
-$stmt = $conn->prepare("SELECT id, sname, scategory, sdescription, sprice, status FROM services 
+$stmt = $conn->prepare("SELECT id, sname AS name, scategory AS category, sdescription AS description, sprice AS price, status FROM services 
                         WHERE sname LIKE ? OR scategory LIKE ? OR sdescription LIKE ?");
 $searchTerm = "%$query%";
 $stmt->execute([$searchTerm, $searchTerm, $searchTerm]);
