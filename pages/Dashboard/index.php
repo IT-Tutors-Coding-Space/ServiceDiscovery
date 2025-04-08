@@ -1,5 +1,8 @@
 <?php
     require_once "../../php/session_handler.php";
+    if(isset($_GET['logout'])) {
+        logout();
+    }
 
     if (!isBusinessOwner()) {
         header("Location: /ServiceDiscovery/pages/Home/login.php");
@@ -34,7 +37,7 @@
             </button>
             <div class="profile-dropdown" id="profile-dropdown">
                 <a href="#" data-page="profile" style="color:blue">👤 Profile</a>
-                <a href="#" onclick="event.preventDefault(); logout();" style="color:red">↻ Logout</a>
+                <a href="/ServiceDiscovery/php/session_handler.php?logout=true" style="color:red">↻ Logout</a>
             </div>
         </div>
     </div>
@@ -46,7 +49,7 @@
             <li><a href="#" data-page="settings"><i class="fas fa-cog"></i> <span class="text">Settings</span></a></li>
             <li><a href="#" data-page="manage_listings"><i class="fas fa-list"></i> <span class="text">Manage Listings</span></a></li>
             <li><a href="#" data-page="browse_request"><i class="fas fa-envelope"></i> <span class="text">Browse Requests</span></a></li>  
-            <li><a href="#" data-page="messages"><i class="fas fa-cog"></i> <span class="text">Messages</span></a></li>
+            <li><a href="#" data-page="messages"><i class="fa fa-edit"></i> <span class="text">Edit Profile</span></a></li>
           
         </ul>
 

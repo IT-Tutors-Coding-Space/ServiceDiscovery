@@ -7,7 +7,7 @@ $timeout = 30 * 60; // 30 minutes in seconds
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $timeout)) {
     session_unset();
     session_destroy();
-    header("Location:".BASE_PATH." /Home/login.php");
+    header("Location:".BASE_PATH." Home/login.php");
     exit();
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // Update last activity time
@@ -38,7 +38,7 @@ function isCustomer() {
  */
 function requireLogin() {
     if (!isLoggedIn()) {
-        header("Location:".BASE_PATH." /Home/login.php");
+        header("Location:".BASE_PATH."Home/login.php");
         exit();
     }
 }
@@ -51,5 +51,8 @@ function logout() {
     session_destroy();
     header("Location:".BASE_PATH." /Home/login.php");
     exit();
+}
+if(isset($_GET['logout'])) {
+    logout();
 }
 ?>
