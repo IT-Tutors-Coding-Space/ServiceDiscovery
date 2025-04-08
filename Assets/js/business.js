@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+
     // Sidebar navigation functionality
     document.querySelectorAll(".sidebar a").forEach(link => {
         link.addEventListener("click", function (event) {
@@ -66,26 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Initial page load
     loadPageFromHash();
-
-    // Logout function
-    function logout() {
-        fetch("/ServiceDiscovery/php/logout.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                window.location.href = "/ServiceDiscovery/pages/Home/login.php";
-            } else {
-                alert("Logout failed. Please try again.");
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("An error occurred. Please try again.");
-        });
-    }
 
     // Attach logout function to logout button
     document.getElementById("logout-btn").addEventListener("click", logout);
